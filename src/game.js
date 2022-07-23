@@ -58,7 +58,7 @@ class Player extends GenericEntity{
         if(keysPressed.z == true && this.delayShot == false && player.x < 400){
             stage.shots.push(new Shot(player.x, player.y,25));
             this.delayShot = true;
-            this.delay(30);
+            this.delay(5);
         }
     }
 };
@@ -110,18 +110,16 @@ class Stage{
     }
 
     shotColision(){
-        if(this.shots.length !== 0 && this.enemys.length !== 0){
+        if(this.shots.length > 0 && this.enemys.length > 0){
             for(let i = 0;i < this.enemys.length;i++){
                 for(let j = 0;j < this.shots.length;j++){
-                    let d_enemy = this.enemys[i].x - this.shots[j].x;
-                    let d_shot = this.enemys[i].y - this.shots[j].y;
-                    let distance = Math.sqrt(d_enemy * d_enemy + d_shot * d_shot);
-                    if(distance < 20){
-                        this.shots.splice(this.shots[i],1);
-                        j--;
+                    if(dist(this.enemys[i].x, this.enemys[i].y,this.shots[j].x,this.shots[j].y) < 20){
                         this.enemys.splice(this.enemys[i],1);
                         i--;
+                        this.shots.splice(this.shots[j],1);
+                        j--;
                         stage.player.points += 1;
+                        break;
                     }
                 }
             }
@@ -145,12 +143,13 @@ function setup(){
     createCanvas(gameSize,gameSize);
     player = new Player(gameSize/2,gameSize-60,10);
     stage = new Stage(player,1);
-    stage.setEnemys(14);
+    stage.setEnemys(10);
     player.handleKeyboard();
 }
 
 function draw(){
     clear();
+    stage.shotColision();
     ellipse(stage.player.x,stage.player.y,30,30);
     stage.updateEnemys();
     stage.updateShots();
