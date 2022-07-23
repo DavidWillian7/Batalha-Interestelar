@@ -18,7 +18,7 @@ class Player extends GenericEntity{
         this.points = 0;
     }
 
-    movePlayer(){
+    handleKeyboard(){
         let keysPressed = {};
         document.addEventListener('keydown', (event) => {
             keysPressed[event.key] = true;
@@ -119,7 +119,7 @@ function setup(){
     player = new Player(gameSize/2,gameSize-60,10);
     stage = new Stage(player,1);
     stage.setEnemys(4);
-    player.movePlayer();
+    player.handleKeyboard();
 }
 
 function draw(){
