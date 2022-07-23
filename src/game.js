@@ -17,29 +17,38 @@ class Player extends GenericEntity{
         this.hp = 100;
         this.points = 0;
     }
+
+    movePlayer(){
+        let keysPressed = {};
+        document.addEventListener('keydown', (event) => {
+            keysPressed[event.key] = true;
+            stage.player.updatePlayer(keysPressed);
+        });     
+        document.addEventListener('keyup', (event) => {
+            delete keysPressed[event.key];
+        });
+    }
     
-    updatePlayer(keyPressed){
-        if (keyPressed == 'ArrowUp' && player.y > 1) {
+    updatePlayer(keysPressed){
+        if (keysPressed.ArrowUp == true && player.y > 1) {
             this.move(0,-this.speed);
         }
         
-        if (keyPressed == 'ArrowDown' && player.y < 400) {
+        if (keysPressed.ArrowDown == true && player.y < 400) {
             this.move(0,this.speed);
         }
         
-        if (keyPressed == 'ArrowLeft' && player.x > 1) {
+        if (keysPressed.ArrowLeft == true && player.x > 1) {
             this.move(-this.speed,0);
         }
         
-        if (keyPressed == 'ArrowRight' && player.x < 400) {
+        if (keysPressed.ArrowRight == true && player.x < 400) {
             this.move(this.speed,0);
         }
-
-        if(keyPressed == ' ' && player.x < 400){
+        if(keysPressed.z == true && player.x < 400){
             stage.shots.push(new Shot(player.x, player.y,25));
         }
     }
-
 };
 
 class Enemy extends GenericEntity{
@@ -83,9 +92,13 @@ class Stage{
             }
             else{
                 shot.move(0,-2);
-                rect(shot.x,shot.y,10,10);
+                ellipse(shot.x,shot.y,10,10);
             }
         } 
+    }
+
+    checkColision(){
+
     }
 }
 
@@ -106,13 +119,7 @@ function setup(){
     player = new Player(gameSize/2,gameSize-60,10);
     stage = new Stage(player,1);
     stage.setEnemys(4);
-
-    document.addEventListener('keydown',handleKeyDown);
-
-    function handleKeyDown(event){
-        const keyPressed = event.key;
-        player.updatePlayer(keyPressed);
-    }
+    player.movePlayer();
 }
 
 function draw(){
