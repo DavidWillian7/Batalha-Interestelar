@@ -7,11 +7,52 @@ canvas {
     border-radius: 5px;
     border: solid 1px;
     margin: auto;
+    background-image: url('assets/menu.jpg');
 }
 
 body {
     display: flex;
     justify-content: center;
+    flex-direction: column;
     align-items: center;
     margin-top: 50px;
+    background-color: white;
+}
+
+.menu{
+    width: 450px;
+    height: 450px;
+    border: solid 1px black;
+    border-radius: 5px;
+    background-image: url('assets/menu.jpg');
+}
+
+.name-game{
+    text-align: center;
+    padding: 30px;
+    margin: auto;
+    margin-top: 25px;
+    margin-bottom: 30px;
+    color: white;
+}
+
+.menu-btn{
+    display: flex;
+    flex-direction: column;
+    border-radius: 15px;
+    font-size: 22px;
+    padding: 10px;
+    margin: auto;
+    margin-bottom: 25px;
+    color: #42a1f4;
+    min-width: 30%;
+    align-items: center;
+    transition: all 0.5s;
+}
+
+.menu-btn:hover {
+    background-color: #42a1f4;
+    color: white;
+    cursor: pointer;
+    width: 31%;
 }
