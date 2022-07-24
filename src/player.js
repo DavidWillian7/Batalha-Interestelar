@@ -19,7 +19,7 @@ class Player extends GenericEntity{
         let keysPressed = {};
         document.addEventListener('keydown', (event) => {
             keysPressed[event.key] = true;
-            stage.player.updatePlayer(keysPressed);
+            this.updatePlayer(keysPressed);
         });     
         document.addEventListener('keyup', (event) => {
             delete keysPressed[event.key];
@@ -43,9 +43,13 @@ class Player extends GenericEntity{
             this.move(this.speed,0);
         }
         if(keysPressed.z == true && this.delayShot == false){
-            stage.shots.push(new Shot(player.x, player.y,25));
+            phaseControler.stage.shots.push(new Shot(player.x, player.y,25));
             this.delayShot = true;
             this.delay(5);
         }
+    }
+
+    setPlayer(){
+        ellipse(this.x,this.y,30,30);
     }
 };
