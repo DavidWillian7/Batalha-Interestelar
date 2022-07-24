@@ -109,7 +109,20 @@ class Stage{
         } 
     }
 
-    shotColision(){
+    checkColisionEnemy(){
+        if(this.enemys.length > 0){
+            for(let i = 0;i < this.enemys.length;i++){
+                if(dist(this.enemys[i].x, this.enemys[i].y,this.player.x,this.player.y) < 20){
+                    this.enemys.splice(i,1);
+                    i--;
+                    this.player.hp -= 1;
+                    break;
+                }
+            }
+        }
+    }
+
+    checkShotEnemy(){
         if(this.shots.length > 0 && this.enemys.length > 0){
             for(let i = 0;i < this.enemys.length;i++){
                 for(let j = 0;j < this.shots.length;j++){
@@ -149,7 +162,8 @@ function setup(){
 
 function draw(){
     clear();
-    stage.shotColision();
+    stage.checkColisionEnemy();
+    stage.checkShotEnemy();
     ellipse(stage.player.x,stage.player.y,30,30);
     stage.updateEnemys();
     stage.updateShots();
