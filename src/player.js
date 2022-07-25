@@ -51,6 +51,6 @@ class Player extends GenericEntity{
     }
 
     setPlayer(){
-        ellipse(this.x,this.y,30,30);
+        circle(this.x,this.y,30);
     }
 };

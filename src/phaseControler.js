@@ -55,7 +55,7 @@ class PhaseControler{
             }
             else{
                 enemy.move(0,2);
-                ellipse(enemy.x,enemy.y,30,30);
+                circle(enemy.x,enemy.y,30);
             }
         }
     }
@@ -67,7 +67,7 @@ class PhaseControler{
             }
             else{
                 shot.move(0,-2);
-                ellipse(shot.x,shot.y,10,10);
+                circle(shot.x,shot.y,10);
             }
         } 
     }
@@ -75,7 +75,7 @@ class PhaseControler{
     checkColisionEnemy(){
         if(this.enemys.length > 0){
             for(let i = 0;i < this.enemys.length;i++){
-                if(dist(this.enemys[i].x, this.enemys[i].y,this.player.x,this.player.y) < 20){
+                if(dist(this.enemys[i].x, this.enemys[i].y,this.player.x,this.player.y) < 30){
                     this.enemys.splice(i,1);
                     i--;
                     this.player.hp -= 10;
