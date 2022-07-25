@@ -10,7 +10,7 @@ canvas {
     border-radius: 5px;
     border: solid 1px;
     margin: auto;
-    background-image: url('assets/menu.jpg');
+    background-image: url('assets/teste.jpg');
 }
 
 body {
@@ -27,7 +27,7 @@ body {
     height: 450px;
     border: solid 1px black;
     border-radius: 5px;
-    background-image: url('assets/menu.jpg');
+    background-image: url('assets/menu.png');
 }
 
 .name-game{
