@@ -1,6 +1,9 @@
+@import url('https://fonts.googleapis.com/css2?family=Chakra+Petch:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600;1,700&display=swap');
+
 *{
     margin: 0;
     padding: 0;
+    font-family: 'Chakra Petch', sans-serif;
 }
 
 canvas {
@@ -28,6 +31,8 @@ body {
 }
 
 .name-game{
+    font-weight: 700;
+    font-style: italic;
     text-align: center;
     padding: 30px;
     margin: auto;
@@ -37,6 +42,7 @@ body {
 }
 
 .menu-btn{
+    font-weight: 500;
     display: flex;
     flex-direction: column;
     border-radius: 15px;
@@ -55,4 +61,30 @@ body {
     color: white;
     cursor: pointer;
     width: 31%;
+}
+
+.tutorial{
+    color: white;
+    margin: 10px 60px;
+}
+
+.btn-menu{
+    margin-top: 35px;
+}
+
+.titulo-historia{
+    margin-top: 10px;
+    margin-bottom: 0;
+    padding: 15px 20px;
+}
+
+.historia{
+    margin: 5px 35px;
+    color: white;
+    text-align: justify;
+    text-indent: 30px;
+}
+
+.btn-menu-historia{
+    margin-top: 17px;
 }
