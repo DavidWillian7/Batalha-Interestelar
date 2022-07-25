@@ -1,22 +1,20 @@
 function preload(){
-    let player;
     let phaseControler;
 }
 
 function setup(){
     let gameSize = 450;
     createCanvas(gameSize,gameSize);
-    player = new Player(gameSize/2,gameSize-60,10);
-    phaseControler = new PhaseControler(player);
-    player.handleKeyboard();
+    phaseControler = new PhaseControler();
+    phaseControler.setEnemys(phaseControler.currentLevel*10);
 }
 
 function draw(){
     clear();
-    phaseControler.stage.checkColisionEnemy();
-    phaseControler.stage.checkShotEnemy();
+    phaseControler.player.setPlayer();
+    phaseControler.updateEnemys();
+    phaseControler.updateShots();
+    phaseControler.checkColisionEnemy();
+    phaseControler.checkShotEnemy();
     phaseControler.checkPlayerPoints();
-    player.setPlayer();
-    phaseControler.stage.updateEnemys();
-    phaseControler.stage.updateShots();
 }

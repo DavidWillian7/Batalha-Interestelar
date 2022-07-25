@@ -4,6 +4,7 @@ class Player extends GenericEntity{
         this.hp = 100;
         this.points = 0;
         this.delayShot = false;
+        this.handleKeyboard();
     }
 
     delay(t){
@@ -27,23 +28,23 @@ class Player extends GenericEntity{
     }
     
     updatePlayer(keysPressed){
-        if (keysPressed.ArrowUp == true && player.y > 1) {
+        if (keysPressed.ArrowUp == true && this.y > 1) {
             this.move(0,-this.speed);
         }
         
-        if (keysPressed.ArrowDown == true && player.y < 420) {
+        if (keysPressed.ArrowDown == true && this.y < 420) {
             this.move(0,this.speed);
         }
         
-        if (keysPressed.ArrowLeft == true && player.x > 1) {
+        if (keysPressed.ArrowLeft == true && this.x > 1) {
             this.move(-this.speed,0);
         }
         
-        if (keysPressed.ArrowRight == true && player.x < 420) {
+        if (keysPressed.ArrowRight == true && this.x < 420) {
             this.move(this.speed,0);
         }
         if(keysPressed.z == true && this.delayShot == false){
-            phaseControler.stage.shots.push(new Shot(player.x, player.y,25));
+            phaseControler.shots.push(new Shot(this.x, this.y,25));
             this.delayShot = true;
             this.delay(5);
         }
