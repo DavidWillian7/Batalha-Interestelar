@@ -11,6 +11,7 @@ function setup(){
 
 function draw(){
     clear();
+    phaseControler.drawHud();
     phaseControler.player.setPlayer();
     phaseControler.updateEnemys();
     phaseControler.updateShots();
