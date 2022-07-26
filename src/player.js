@@ -4,6 +4,7 @@ class Player extends GenericEntity{
         this.hp = 100;
         this.points = 0;
         this.delayShot = false;
+        this.ship = loadImage('../assets/ship.png');
         this.handleKeyboard();
     }
 
@@ -51,6 +52,8 @@ class Player extends GenericEntity{
     }
 
     setPlayer(){
-        circle(this.x,this.y,30);
+        circle(this.x,this.y,60);
+        imageMode(CORNER);
+        image(this.ship,this.x-38,this.y-46,80,80);
     }
 };

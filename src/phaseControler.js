@@ -44,6 +44,13 @@ class PhaseControler{
             let randomX = parseInt(random(0,450));
             let randomY = parseInt(random(-200,-500));
             this.enemys.push(new Enemy(randomX,randomY,1));
+            if(this.currentLevel == 2 && i%2 == 0){
+                this.enemys[i].hp *= this.currentLevel;
+            }else if(this.currentLevel == 3 && i%3 == 0){
+                this.enemys[i].hp *= this.currentLevel;
+            }else if(this.currentLevel == 4 && i%4 == 0){
+                this.enemys[i].hp *= this.currentLevel;
+            }
         }
     }
 
@@ -75,7 +82,7 @@ class PhaseControler{
     checkColisionEnemy(){
         if(this.enemys.length > 0){
             for(let i = 0;i < this.enemys.length;i++){
-                if(dist(this.enemys[i].x, this.enemys[i].y,this.player.x,this.player.y) < 30){
+                if(dist(this.enemys[i].x, this.enemys[i].y,this.player.x,this.player.y) < 45){
                     this.enemys.splice(i,1);
                     i--;
                     this.player.hp -= 10;
@@ -91,11 +98,14 @@ class PhaseControler{
             for(let i = 0;i < this.enemys.length;i++){
                 for(let j = 0;j < this.shots.length;j++){
                     if(dist(this.enemys[i].x, this.enemys[i].y,this.shots[j].x,this.shots[j].y) < 20){
-                        this.enemys.splice(i,1);
-                        i--;
+                        this.enemys[i].hp -= 10;
+                        if(this.enemys[i].hp == 0){
+                            this.enemys.splice(i,1);
+                            this.player.points += 10;
+                            i--;
+                        }
                         this.shots.splice(j,1);
                         j--;
-                        this.player.points += 10;
                         break;
                     }
                 }
