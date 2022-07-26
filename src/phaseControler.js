@@ -44,7 +44,7 @@ class PhaseControler{
             let randomX = parseInt(random(0,450));
             let randomY = parseInt(random(-200,-500));
             this.enemys.push(new Enemy(randomX,randomY,1));
-            this.enemys[i].shipEnemy = loadImage('../assets/boss.png');
+            this.enemys[i].shipEnemy = loadImage('../assets/enemy1.png');
             if(this.currentLevel == 2 && i%2 == 0){
                 this.enemys[i].hp *= this.currentLevel;
                 this.enemys[i].shipEnemy = loadImage('../assets/enemy2.png');
@@ -93,8 +93,8 @@ class PhaseControler{
                     this.enemys[i].x = parseInt(random(0,450));
                     this.enemys[i].y = parseInt(random(-200,-500));
                     this.player.hp -= 10;
-                    this.player.points += 10;
                     if(this.enemys[i].hp == 0){
+                        this.player.points += 10;
                         this.enemys.splice(i,1);
                         i--;
                     }
