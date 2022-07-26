@@ -47,10 +47,13 @@ class PhaseControler{
             this.enemys[i].shipEnemy = loadImage('../assets/enemy1.png');
             if(this.currentLevel == 2 && i%2 == 0){
                 this.enemys[i].hp *= this.currentLevel;
+                this.enemys[i].shipEnemy = loadImage('../assets/enemy2.png');
             }else if(this.currentLevel == 3 && i%3 == 0){
                 this.enemys[i].hp *= this.currentLevel;
+                this.enemys[i].shipEnemy = loadImage('../assets/enemy3.png');
             }else if(this.currentLevel == 4 && i%4 == 0){
                 this.enemys[i].hp *= this.currentLevel;
+                this.enemys[i].shipEnemy = loadImage('../assets/enemy4.png');
             }
         }
     }
