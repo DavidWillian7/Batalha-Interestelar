@@ -3,7 +3,7 @@ class PhaseControler{
         this.player = new Player(225,390,3);
         this.enemys = [];
         this.shots = [];
-        this.currentLevel = 1;
+        this.currentLevel = 5;
     }
     
     changeHpcolor(){
@@ -42,39 +42,65 @@ class PhaseControler{
     }
     
     setEnemys(amount){
-        for(let i = 0; i < amount; i++){
-            let randomX = parseInt(random(0,450));
-            let randomY = parseInt(random(-200,-500));
-            this.enemys.push(new Enemy(randomX,randomY,1));
-            this.enemys[i].shipEnemy = loadImage('../assets/enemy1.png');
-            if(this.currentLevel == 2 && i%2 == 0){
-                this.enemys[i].type = 2;
-                this.enemys[i].hp *= this.currentLevel;
-                this.enemys[i].shipEnemy = loadImage('../assets/enemy2.png');
-            }else if(this.currentLevel == 3 && i%3 == 0){
-                this.enemys[i].type = 3;
-                this.enemys[i].hp *= this.currentLevel;
-                this.enemys[i].shipEnemy = loadImage('../assets/enemy3.png');
-            }else if(this.currentLevel == 4 && i%4 == 0){
-                this.enemys[i].type = 4;
-                this.enemys[i].hp *= this.currentLevel;
-                this.enemys[i].shipEnemy = loadImage('../assets/enemy4.png');
+        if(this.currentLevel != 5){
+            for(let i = 0; i < amount; i++){
+                let randomX = parseInt(random(0,450));
+                let randomY = parseInt(random(-200,-500));
+                this.enemys.push(new Enemy(randomX,randomY,1));
+                this.enemys[i].shipEnemy = loadImage('../assets/enemy1.png');
+                if(this.currentLevel == 2 && i%2 == 0){
+                    this.enemys[i].type = 2;
+                    this.enemys[i].hp *= this.currentLevel;
+                    this.enemys[i].shipEnemy = loadImage('../assets/enemy2.png');
+                }else if(this.currentLevel == 3 && i%3 == 0){
+                    this.enemys[i].type = 3;
+                    this.enemys[i].hp *= this.currentLevel;
+                    this.enemys[i].shipEnemy = loadImage('../assets/enemy3.png');
+                }else if(this.currentLevel == 4 && i%4 == 0){
+                    this.enemys[i].type = 4;
+                    this.enemys[i].hp *= this.currentLevel;
+                    this.enemys[i].shipEnemy = loadImage('../assets/enemy4.png');
+                }
             }
+        }else{
+            let randomX = parseInt(random(0,450));
+            let randomY = parseInt(random(70,100));
+            this.enemys.push(new Enemy(randomX,randomY,1));
+            this.enemys[0].shipEnemy = loadImage('../assets/boss.png');
+            this.enemys[0].type = 5;
+            this.enemys[0].hp = 5000;
         }
     }
 
     updateEnemys(){
-        for(let enemy of this.enemys){
-            if(enemy.y > 500 || enemy.x > 500){
-                enemy.x = parseInt(random(0,450));
-                enemy.y = parseInt(random(-200,-500));
+        if(this.currentLevel != 5){
+            for(let enemy of this.enemys){
+                if(enemy.y > 500 || enemy.x > 500){
+                    enemy.x = parseInt(random(0,450));
+                    enemy.y = parseInt(random(-200,-500));
+                }
+                else{
+                    enemy.move(0,2);
+                    circle(enemy.x,enemy.y,45);
+                    imageMode(CENTER);
+                    image(enemy.shipEnemy,enemy.x,enemy.y,40,40);
+                }
             }
-            else{
-                enemy.move(0,2);
-                circle(enemy.x,enemy.y,45);
-                imageMode(CENTER);
-                image(enemy.shipEnemy,enemy.x,enemy.y,40,40);
+        }else{
+            if(this.enemys[0].x <= 400 && this.enemys[0].moveRigth == true){
+                this.enemys[0].move(2,0);
+                if(this.enemys[0].x >= 401){
+                    this.enemys[0].moveRigth = false;
+                }
+            }else if(this.enemys[0].x >= 50 && this.enemys[0].moveRigth == false){
+                this.enemys[0].move(-2,0);
+                if(this.enemys[0].x <= 49){
+                    this.enemys[0].moveRigth = true;
+                }
             }
+            circle(this.enemys[0].x,this.enemys[0].y,120);
+            imageMode(CENTER);
+            image(this.enemys[0].shipEnemy,this.enemys[0].x,this.enemys[0].y,120,120);
         }
     }
 
