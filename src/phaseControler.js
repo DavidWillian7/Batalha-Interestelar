@@ -111,8 +111,9 @@ class PhaseControler{
             }
             else{
                 shot.move(0,-2);
-                fill(230,230,230);
-                circle(shot.x,shot.y,10);
+                circle(shot.x,shot.y,15);
+                imageMode(CENTER);
+                image(shot.shotImg,shot.x,shot.y,6,15);
             }
         } 
     }
@@ -138,7 +139,7 @@ class PhaseControler{
         if(this.shots.length > 0 && this.enemys.length > 0){
             for(let i = 0;i < this.enemys.length;i++){
                 for(let j = 0;j < this.shots.length;j++){
-                    if(dist(this.enemys[i].x, this.enemys[i].y,this.shots[j].x,this.shots[j].y) < 20){
+                    if(dist(this.enemys[i].x, this.enemys[i].y,this.shots[j].x,this.shots[j].y) < 30){
                         this.enemys[i].hp -= 10;
                         if(this.enemys[i].hp == 0){
                             this.enemys.splice(i,1);

@@ -31,7 +31,7 @@ class Player extends GenericEntity{
         if(keyIsDown(90) && this.delayShot == false){
             phaseControler.shots.push(new Shot(this.x, this.y,25));
             this.delayShot = true;
-            this.delay(5);
+            this.delay(15);
         }
     }
 
