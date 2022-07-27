@@ -1,6 +1,6 @@
 class PhaseControler{
     constructor(){
-        this.player = new Player(225,390,5);
+        this.player = new Player(225,390,3);
         this.enemys = [];
         this.shots = [];
         this.currentLevel = 1;
