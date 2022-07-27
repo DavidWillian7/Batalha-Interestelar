@@ -7,21 +7,21 @@ class PhaseControler{
     }
     
     changeHpcolor(){
-        if (this.player.hp < 30){
+        if (this.player.hp < 40){
             return '#FF0000';
         }else{
-            return '#42a1f4';
+            return '#FFFFFF';
         }
     }
-
+    //#42a1f4
     drawHud(){
         noStroke();
-        fill('#42a1f4');
+        fill(255,255,255);
         textSize(12);
         textAlign(CENTER);
         text("Nível: "  + this.currentLevel, 400, 440);
 
-        fill('#42a1f4');
+        fill(255,255,255);
         textSize(12);
         textAlign(CENTER);
         text("Pontos: "  + this.player.points, 320, 440);

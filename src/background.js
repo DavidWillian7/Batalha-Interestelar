@@ -2,10 +2,10 @@ class Background{
     constructor(){
         this.level = phaseControler.currentLevel;
         this.mapa1 = loadImage('../assets/mapa1.png');
-        this.mapa2 = loadImage('../assets/mapa2.jpg');
-        this.mapa3 = loadImage('../assets/mapa3.jpg');
-        this.mapa4 = loadImage('../assets/mapa4.jpg');
-        this.mapaBoss = loadImage('../assets/mapaBoss.jpg');
+        this.mapa2 = loadImage('../assets/mapa2.png');
+        this.mapa3 = loadImage('../assets/mapa3.png');
+        this.mapa4 = loadImage('../assets/mapa4.png');
+        this.mapaBoss = loadImage('../assets/mapaBoss.png');
     }
 
     checkBackground(){
