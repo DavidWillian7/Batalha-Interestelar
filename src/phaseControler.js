@@ -3,7 +3,7 @@ class PhaseControler{
         this.player = new Player(225,390,3);
         this.enemys = [];
         this.shots = [];
-        this.currentLevel = 5;
+        this.currentLevel = 1;
     }
     
     changeHpcolor(){
