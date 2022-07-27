@@ -46,12 +46,15 @@ class PhaseControler{
             this.enemys.push(new Enemy(randomX,randomY,1));
             this.enemys[i].shipEnemy = loadImage('../assets/enemy1.png');
             if(this.currentLevel == 2 && i%2 == 0){
+                this.enemys[i].type = 2;
                 this.enemys[i].hp *= this.currentLevel;
                 this.enemys[i].shipEnemy = loadImage('../assets/enemy2.png');
             }else if(this.currentLevel == 3 && i%3 == 0){
+                this.enemys[i].type = 3;
                 this.enemys[i].hp *= this.currentLevel;
                 this.enemys[i].shipEnemy = loadImage('../assets/enemy3.png');
             }else if(this.currentLevel == 4 && i%4 == 0){
+                this.enemys[i].type = 4;
                 this.enemys[i].hp *= this.currentLevel;
                 this.enemys[i].shipEnemy = loadImage('../assets/enemy4.png');
             }
@@ -90,15 +93,13 @@ class PhaseControler{
         if(this.enemys.length > 0){
             for(let i = 0;i < this.enemys.length;i++){
                 if(dist(this.enemys[i].x, this.enemys[i].y,this.player.x,this.player.y) < 45){
-                    this.enemys[i].hp -= 10;
-                    this.enemys[i].x = parseInt(random(0,450));
-                    this.enemys[i].y = parseInt(random(-200,-500));
-                    this.player.hp -= 10;
-                    if(this.enemys[i].hp == 0){
-                        this.player.points += 10;
-                        this.enemys.splice(i,1);
-                        i--;
+                    if(this.enemys[i].type != 1){
+                        this.player.hp -= (10*this.enemys[i].type);
+                    }else{
+                        this.player.hp -= 10;
                     }
+                    this.player.points += 10;
+                    this.enemys.splice(i,1);
                     break;
                 }
             }
@@ -114,10 +115,8 @@ class PhaseControler{
                         if(this.enemys[i].hp == 0){
                             this.enemys.splice(i,1);
                             this.player.points += 10;
-                            i--;
                         }
                         this.shots.splice(j,1);
-                        j--;
                         break;
                     }
                 }
