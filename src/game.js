@@ -18,6 +18,7 @@ function draw(){
     image(mapa.checkBackground(),0,0,gameSize,gameSize);
     phaseControler.drawHud();
     phaseControler.player.setPlayer();
+    phaseControler.player.updatePlayer();
     phaseControler.updateEnemys();
     phaseControler.updateShots();
     phaseControler.checkColisionEnemy();

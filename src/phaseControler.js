@@ -1,6 +1,6 @@
 class PhaseControler{
     constructor(){
-        this.player = new Player(225,390,10);
+        this.player = new Player(225,390,5);
         this.enemys = [];
         this.shots = [];
         this.currentLevel = 1;
@@ -80,6 +80,7 @@ class PhaseControler{
             }
             else{
                 shot.move(0,-2);
+                fill(230,230,230);
                 circle(shot.x,shot.y,10);
             }
         } 
