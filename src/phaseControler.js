@@ -18,11 +18,13 @@ class PhaseControler{
         noStroke();
         fill(255,255,255);
         textSize(12);
+        textFont('Pixel');
         textAlign(CENTER);
         text("Nível: "  + this.currentLevel, 400, 440);
 
         fill(255,255,255);
         textSize(12);
+        textFont('Pixel');
         textAlign(CENTER);
         text("Pontos: "  + this.player.points, 320, 440);
         
