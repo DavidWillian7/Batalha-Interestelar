@@ -137,17 +137,34 @@ class PhaseControler{
     }
 
     checkShotEnemy(){
-        if(this.shots.length > 0 && this.enemys.length > 0){
-            for(let i = 0;i < this.enemys.length;i++){
-                for(let j = 0;j < this.shots.length;j++){
-                    if(dist(this.enemys[i].x, this.enemys[i].y,this.shots[j].x,this.shots[j].y) < 30){
-                        this.enemys[i].hp -= 10;
-                        if(this.enemys[i].hp == 0){
-                            this.enemys[i].enemyExplosionSong.play();
-                            this.enemys.splice(i,1);
+        if(this.currentLevel != 5){
+            if(this.shots.length > 0 && this.enemys.length > 0){
+                for(let i = 0;i < this.enemys.length;i++){
+                    for(let j = 0;j < this.shots.length;j++){
+                        if(dist(this.enemys[i].x, this.enemys[i].y,this.shots[j].x,this.shots[j].y) < 30){
+                            this.enemys[i].hp -= 10;
+                            if(this.enemys[i].hp == 0){
+                                this.enemys[i].enemyExplosionSong.play();
+                                this.enemys.splice(i,1);
+                                this.player.points += 10;
+                            }
+                            this.shots.splice(j,1);
+                            break;
+                        }
+                    }
+                }
+            }
+        }else{
+            if(this.shots.length > 0){
+                for(let i = 0;i < this.shots.length;i++){
+                    if(dist(this.shots[i].x,this.shots[i].y,this.enemys[0].x,this.enemys[0].y) < 67.5){
+                        this.enemys[0].hp -= 10;
+                        if(this.enemys[0].hp == 0){
+                            this.enemys[0].enemyExplosionSong.play();
+                            this.enemys.splice(0,1);
                             this.player.points += 10;
                         }
-                        this.shots.splice(j,1);
+                        this.shots.splice(i,1);
                         break;
                     }
                 }
