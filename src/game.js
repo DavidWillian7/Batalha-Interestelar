@@ -1,7 +1,10 @@
+let songShot;
+
 function preload(){
     let phaseControler;
     let mapa;
     let gameSize;
+    songShot = loadSound('../assets/songs/song-shot.wav');
 }
 
 function setup(){
