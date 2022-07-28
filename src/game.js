@@ -1,10 +1,6 @@
 let songShot;
 let songEnemyExplosion;
-let imgEnemy1;
-let imgEnemy2;
-let imgEnemy3;
-let imgEnemy4;
-let imgBoss;
+let imgEnemys = [];
 
 function preload(){
     let phaseControler;
@@ -12,11 +8,11 @@ function preload(){
     let gameSize;
     songShot = loadSound('../assets/songs/song-shot.wav');
     songEnemyExplosion = loadSound('../assets/songs/explosion.flac');
-    imgEnemy1 = loadImage('../assets/enemy1.png');
-    imgEnemy2 = loadImage('../assets/enemy2.png');
-    imgEnemy3 = loadImage('../assets/enemy3.png');
-    imgEnemy4 = loadImage('../assets/enemy4.png');
-    imgBoss = loadImage('../assets/boss.png');
+    imgEnemys.push(loadImage('../assets/enemy1.png'));
+    imgEnemys.push(loadImage('../assets/enemy2.png'));
+    imgEnemys.push(loadImage('../assets/enemy3.png'));
+    imgEnemys.push(loadImage('../assets/enemy4.png'));
+    imgEnemys.push(loadImage('../assets/boss.png'));
 }
 
 function setup(){

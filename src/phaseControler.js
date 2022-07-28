@@ -4,11 +4,7 @@ class PhaseControler{
         this.enemys = [];
         this.shots = [];
         this.currentLevel = 1;
-        this.enemy1 = imgEnemy1;
-        this.enemy2 = imgEnemy2;
-        this.enemy3 = imgEnemy3;
-        this.enemy4 = imgEnemy4;
-        this.boss = imgBoss;
+        this.enemysImg = imgEnemys;
     }
     
     changeHpcolor(){
@@ -52,26 +48,26 @@ class PhaseControler{
                 let randomX = parseInt(random(0,450));
                 let randomY = parseInt(random(-200,-500));
                 this.enemys.push(new Enemy(randomX,randomY,1));
-                this.enemys[i].shipEnemy = this.enemy1;
+                this.enemys[i].shipEnemy = this.enemysImg[0];
                 if(this.currentLevel == 2 && i%2 == 0){
                     this.enemys[i].type = 2;
                     this.enemys[i].hp *= this.currentLevel;
-                    this.enemys[i].shipEnemy = this.enemy2;
+                    this.enemys[i].shipEnemy = this.enemysImg[1];
                 }else if(this.currentLevel == 3 && i%3 == 0){
                     this.enemys[i].type = 3;
                     this.enemys[i].hp *= this.currentLevel;
-                    this.enemys[i].shipEnemy = this.enemy3;
+                    this.enemys[i].shipEnemy = this.enemysImg[2];
                 }else if(this.currentLevel == 4 && i%4 == 0){
                     this.enemys[i].type = 4;
                     this.enemys[i].hp *= this.currentLevel;
-                    this.enemys[i].shipEnemy = this.enemy4;
+                    this.enemys[i].shipEnemy = this.enemysImg[3];
                 }
             }
         }else{
             let randomX = parseInt(random(0,450));
             let randomY = parseInt(random(70,100));
             this.enemys.push(new Enemy(randomX,randomY,1));
-            this.enemys[0].shipEnemy = this.boss;
+            this.enemys[0].shipEnemy = this.enemysImg[4];
             this.enemys[0].type = 5;
             this.enemys[0].hp = 5000;
         }
