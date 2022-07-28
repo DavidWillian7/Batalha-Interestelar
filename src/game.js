@@ -1,10 +1,12 @@
 let songShot;
+let songEnemyExplosion;
 
 function preload(){
     let phaseControler;
     let mapa;
     let gameSize;
     songShot = loadSound('../assets/songs/song-shot.wav');
+    songEnemyExplosion = loadSound('../assets/songs/explosion.flac');
 }
 
 function setup(){

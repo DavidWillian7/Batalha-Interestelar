@@ -142,6 +142,7 @@ class PhaseControler{
                     if(dist(this.enemys[i].x, this.enemys[i].y,this.shots[j].x,this.shots[j].y) < 30){
                         this.enemys[i].hp -= 10;
                         if(this.enemys[i].hp == 0){
+                            this.enemys[i].enemyExplosionSong.play();
                             this.enemys.splice(i,1);
                             this.player.points += 10;
                         }

@@ -5,5 +5,6 @@ class Enemy extends GenericEntity{
         this.shipEnemy;
         this.type =1;
         this.moveRigth = true;
+        this.enemyExplosionSong = songEnemyExplosion;
     }
 };
