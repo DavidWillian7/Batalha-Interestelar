@@ -1,6 +1,7 @@
 let songShot;
 let songEnemyExplosion;
 let imgEnemys = [];
+let imgMaps = [];
 
 function preload(){
     let phaseControler;
@@ -13,6 +14,12 @@ function preload(){
     imgEnemys.push(loadImage('../assets/enemy3.png'));
     imgEnemys.push(loadImage('../assets/enemy4.png'));
     imgEnemys.push(loadImage('../assets/boss.png'));
+    imgMaps.push(loadImage('../assets/map1.png'));
+    imgMaps.push(loadImage('../assets/map2.png'));
+    imgMaps.push(loadImage('../assets/map3.png'));
+    imgMaps.push(loadImage('../assets/map4.png'));
+    imgMaps.push(loadImage('../assets/mapBoss.png'));
+
 }
 
 function setup(){

@@ -1,25 +1,21 @@
 class Background{
     constructor(){
         this.level = phaseControler.currentLevel;
-        this.mapa1 = loadImage('../assets/mapa1.png');
-        this.mapa2 = loadImage('../assets/mapa2.png');
-        this.mapa3 = loadImage('../assets/mapa3.png');
-        this.mapa4 = loadImage('../assets/mapa4.png');
-        this.mapaBoss = loadImage('../assets/mapaBoss.png');
+        this.maps = imgMaps;
     }
 
     checkBackground(){
         this.level = phaseControler.currentLevel;
         if(this.level == 1){
-            return this.mapa1;
+            return this.maps[0];
         }else if(this.level == 2){
-            return this.mapa2;
+            return this.maps[1];
         }else if(this.level == 3){
-            return this.mapa3;
+            return this.maps[2];
         }else if(this.level == 4){
-            return this.mapa4;
+            return this.maps[3];
         }else{
-            return this.mapaBoss;
+            return this.maps[4];
         }
     }
 }
