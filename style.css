@@ -1,6 +1,6 @@
 @font-face{
     font-family: 'Pixel';
-    src: url('/font/pixel.ttf') format('opentype');
+    src: url('font/pixel.ttf') format('opentype');
     font-weight: normal;
 }
 
