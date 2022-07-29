@@ -64,7 +64,7 @@ class PhaseControler{
                 }
             }
         }else{
-            let randomX = parseInt(random(0,450));
+            let randomX = parseInt(random(0,400));
             let randomY = parseInt(random(70,100));
             this.enemys.push(new Enemy(randomX,randomY,1));
             this.enemys[0].shipEnemy = this.enemysImg[4];
@@ -150,7 +150,9 @@ class PhaseControler{
                         if(dist(this.enemys[i].x, this.enemys[i].y,this.shots[j].x,this.shots[j].y) < 30){
                             this.enemys[i].hp -= 10;
                             if(this.enemys[i].hp == 0){
+                                this.enemys[i].move(0,0);
                                 this.enemys[i].enemyExplosionSong.play();
+                                this.enemys[i].explosionEnemy(this.enemys[i].x,this.enemys[i].y);
                                 this.enemys.splice(i,1);
                                 this.player.points += 10;
                             }

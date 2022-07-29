@@ -2,6 +2,7 @@ let songShot;
 let songEnemyExplosion;
 let imgEnemys = [];
 let imgMaps = [];
+let imgExplosion = [];
 
 function preload(){
     let phaseControler;
@@ -19,7 +20,9 @@ function preload(){
     imgMaps.push(loadImage('../assets/map3.png'));
     imgMaps.push(loadImage('../assets/map4.png'));
     imgMaps.push(loadImage('../assets/mapBoss.png'));
-
+    for(let i = 1;i <= 17;i++){
+        imgExplosion.push(loadImage('../assets/imgExplosion/explosion_'+i+'.png')); 
+    }
 }
 
 function setup(){
