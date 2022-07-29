@@ -10,10 +10,9 @@ class Enemy extends GenericEntity{
     }
 
     explosionEnemy(x,y){
-        let aux = this.explosionImg;
-        for(let i = 0;i < aux.length;i++){
+        for(let i = 0;i < this.explosionImg.length;i++){
             imageMode(CENTER);
-            image(aux[i],x,y,40,40);
+            image(this.explosionImg[i],x,y,40,40);
         }
     }
 };
