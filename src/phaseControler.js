@@ -152,6 +152,7 @@ class PhaseControler{
                             if(this.enemys[i].hp == 0){
                                 this.enemys[i].move(0,0);
                                 this.enemys[i].enemyExplosionSong.play();
+                                this.enemys[i].enemyExplosionSong.setVolume(0.3);
                                 this.enemys[i].explosionEnemy(this.enemys[i].x,this.enemys[i].y);
                                 this.enemys.splice(i,1);
                                 this.player.points += 10;
