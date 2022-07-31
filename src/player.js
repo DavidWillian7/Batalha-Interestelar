@@ -6,6 +6,7 @@ class Player extends GenericEntity{
         this.delayShot = false;
         this.ship = loadImage('../assets/ship.png');
         this.songShotPlayer = songShot;
+        this.canonRigth = true;
     }
 
     delay(t){
@@ -30,7 +31,13 @@ class Player extends GenericEntity{
             this.move(this.speed,0);
         }
         if(keyIsDown(90) && this.delayShot == false){
-            phaseControler.shots.push(new Shot(this.x, this.y,25));
+            if(this.canonRigth){
+                phaseControler.shots.push(new Shot(this.x+12, this.y-10,25));
+                this.canonRigth = false;
+            }else{
+                phaseControler.shots.push(new Shot(this.x-12, this.y-10,25));
+                this.canonRigth = true;
+            }
             this.songShotPlayer.play();
             this.songShotPlayer.setVolume(0.3);
             this.delayShot = true;
