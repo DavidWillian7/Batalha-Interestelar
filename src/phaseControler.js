@@ -45,8 +45,8 @@ class PhaseControler{
     setEnemys(amount){
         if(this.currentLevel != 5){
             for(let i = 0; i < amount; i++){
-                let randomX = parseInt(random(0,450));
-                let randomY = parseInt(random(-200,-500));
+                let randomX = parseInt(random(40,410));
+                let randomY = parseInt(random(-200,-1000));
                 this.enemys.push(new Enemy(randomX,randomY,1));
                 this.enemys[i].shipEnemy = this.enemysImg[0];
                 if(this.currentLevel == 2 && i%2 == 0){
@@ -77,8 +77,8 @@ class PhaseControler{
         if(this.currentLevel != 5){
             for(let enemy of this.enemys){
                 if(enemy.y > 500 || enemy.x > 500){
-                    enemy.x = parseInt(random(0,450));
-                    enemy.y = parseInt(random(-200,-500));
+                    enemy.x = parseInt(random(40,410));
+                    enemy.y = parseInt(random(-100,-1000));
                 }
                 else{
                     enemy.move(0,2);
