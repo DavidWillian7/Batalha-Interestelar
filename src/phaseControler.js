@@ -52,22 +52,22 @@ class PhaseControler{
                 if(this.currentLevel == 2 && i%2 == 0){
                     this.enemys[i].type = 2;
                     this.enemys[i].hp *= this.currentLevel;
-                    this.enemys[i].shipEnemy = this.enemysImg[1];
+                    this.enemys[i].shipEnemy = this.enemysImg[this.currentLevel-1];
                 }else if(this.currentLevel == 3 && i%3 == 0){
                     this.enemys[i].type = 3;
                     this.enemys[i].hp *= this.currentLevel;
-                    this.enemys[i].shipEnemy = this.enemysImg[2];
+                    this.enemys[i].shipEnemy = this.enemysImg[this.currentLevel-1];
                 }else if(this.currentLevel == 4 && i%4 == 0){
                     this.enemys[i].type = 4;
                     this.enemys[i].hp *= this.currentLevel;
-                    this.enemys[i].shipEnemy = this.enemysImg[3];
+                    this.enemys[i].shipEnemy = this.enemysImg[this.currentLevel-1];
                 }
             }
         }else{
             let randomX = parseInt(random(0,400));
             let randomY = parseInt(random(70,100));
             this.enemys.push(new Enemy(randomX,randomY,1));
-            this.enemys[0].shipEnemy = this.enemysImg[4];
+            this.enemys[0].shipEnemy = this.enemysImg[this.currentLevel-1];
             this.enemys[0].type = 5;
             this.enemys[0].hp = 5000;
         }
