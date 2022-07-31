@@ -7,15 +7,15 @@ class Background{
     checkBackground(){
         this.level = phaseControler.currentLevel;
         if(this.level == 1){
-            return this.maps[0];
+            return this.maps[phaseControler.currentLevel-1];
         }else if(this.level == 2){
-            return this.maps[1];
+            return this.maps[phaseControler.currentLevel-1];
         }else if(this.level == 3){
-            return this.maps[2];
+            return this.maps[phaseControler.currentLevel-1];
         }else if(this.level == 4){
-            return this.maps[3];
+            return this.maps[phaseControler.currentLevel-1];
         }else{
-            return this.maps[4];
+            return this.maps[phaseControler.currentLevel-1];
         }
     }
 }
