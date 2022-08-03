@@ -2,9 +2,12 @@ class PhaseControler{
     constructor(){
         this.player = new Player(225,390,3);
         this.enemys = [];
-        this.shots = [];
-        this.currentLevel = 1;
+        this.playerShots = [];
+        this.bossShots = [];
+        this.currentLevel = 5;
         this.enemysImg = imgEnemys;
+        this.songShotBoss = shotBoss;
+        this.delayShotBoss = false;
     }
     
     changeHpcolor(){
@@ -65,11 +68,11 @@ class PhaseControler{
             }
         }else{
             let randomX = parseInt(random(0,400));
-            let randomY = parseInt(random(70,100));
+            let randomY = parseInt(random(60,90));
             this.enemys.push(new Enemy(randomX,randomY,1));
             this.enemys[0].shipEnemy = this.enemysImg[this.currentLevel-1];
             this.enemys[0].type = 5;
-            this.enemys[0].hp = 5000;
+            this.enemys[0].hp = 2000;
         }
     }
 
@@ -102,13 +105,20 @@ class PhaseControler{
             circle(this.enemys[0].x,this.enemys[0].y,120);
             imageMode(CENTER);
             image(this.enemys[0].shipEnemy,this.enemys[0].x,this.enemys[0].y,120,120);
+            if(this.delayShotBoss == false){
+                this.bossShots.push(new Shot(this.enemys[0].x, this.enemys[0].y+50,25));
+                this.songShotBoss.play();
+                this.songShotBoss.setVolume(0.3);
+                this.delayShotBoss = true;
+                this.delay(70);
+            }
         }
     }
 
-    updateShots(){
-        for(let shot of this.shots){
+    updateplayerShots(){
+        for(let shot of this.playerShots){
             if(shot.y < 0){
-                this.shots.splice(shot,1);
+                this.playerShots.splice(shot,1);
             }
             else{
                 shot.move(0,-2);
@@ -117,6 +127,19 @@ class PhaseControler{
                 image(shot.shotImg,shot.x,shot.y,6,15);
             }
         } 
+    }
+
+    updateBossShots(){
+        for(let shot of this.bossShots){
+            if(shot.y > 450){
+                this.bossShots.splice(shot,1);
+            }
+            else{
+                shot.move(0,2);
+                fill(255,255,255);
+                circle(shot.x,shot.y,15);
+            }
+        }
     }
 
     checkColisionEnemy(){
@@ -144,10 +167,10 @@ class PhaseControler{
 
     checkShotEnemy(){
         if(this.currentLevel != 5){
-            if(this.shots.length > 0 && this.enemys.length > 0){
+            if(this.playerShots.length > 0 && this.enemys.length > 0){
                 for(let i = 0;i < this.enemys.length;i++){
-                    for(let j = 0;j < this.shots.length;j++){
-                        if(dist(this.enemys[i].x, this.enemys[i].y,this.shots[j].x,this.shots[j].y) < 30){
+                    for(let j = 0;j < this.playerShots.length;j++){
+                        if(dist(this.enemys[i].x, this.enemys[i].y,this.playerShots[j].x,this.playerShots[j].y) < 30){
                             this.enemys[i].hp -= 10;
                             if(this.enemys[i].hp == 0){
                                 this.enemys[i].move(0,0);
@@ -157,23 +180,23 @@ class PhaseControler{
                                 this.enemys.splice(i,1);
                                 this.player.points += 10;
                             }
-                            this.shots.splice(j,1);
+                            this.playerShots.splice(j,1);
                             break;
                         }
                     }
                 }
             }
         }else{
-            if(this.shots.length > 0){
-                for(let i = 0;i < this.shots.length;i++){
-                    if(dist(this.shots[i].x,this.shots[i].y,this.enemys[0].x,this.enemys[0].y) < 67.5){
+            if(this.playerShots.length > 0){
+                for(let i = 0;i < this.playerShots.length;i++){
+                    if(dist(this.playerShots[i].x,this.playerShots[i].y,this.enemys[0].x,this.enemys[0].y) < 67.5){
                         this.enemys[0].hp -= 10;
                         if(this.enemys[0].hp == 0){
                             this.enemys[0].enemyExplosionSong.play();
                             this.enemys.splice(0,1);
                             this.player.points += 10;
                         }
-                        this.shots.splice(i,1);
+                        this.playerShots.splice(i,1);
                         break;
                     }
                 }
@@ -191,5 +214,14 @@ class PhaseControler{
 
     spawnEnemys(level){
         this.setEnemys(level*10);
+    }
+
+    delay(t){
+        setTimeout(
+            () => {
+                this.delayShotBoss = false;
+            },
+            t * 10
+        );
     }
 }

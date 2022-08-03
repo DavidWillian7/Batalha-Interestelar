@@ -43,8 +43,11 @@ function draw(){
     phaseControler.player.setPlayer();
     phaseControler.player.updatePlayer();
     phaseControler.updateEnemys();
-    phaseControler.updateShots();
+    phaseControler.updateplayerShots();
     phaseControler.checkColisionEnemy();
     phaseControler.checkShotEnemy();
     phaseControler.checkPlayerPoints();
+    if(phaseControler.currentLevel == 5){
+        phaseControler.updateBossShots();
+    }
 }

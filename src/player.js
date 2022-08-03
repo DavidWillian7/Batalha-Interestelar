@@ -19,23 +19,23 @@ class Player extends GenericEntity{
     }
     
     updatePlayer(){
-        if(keyIsDown(UP_ARROW)  && this.y > 1) {
+        if(keyIsDown(UP_ARROW)  && this.y > 20) {
             this.move(0,-this.speed);
-        }else if(keyIsDown(DOWN_ARROW) && this.y < 420) {
+        }else if(keyIsDown(DOWN_ARROW) && this.y < 410) {
             this.move(0,this.speed);
         }
         
-        if (keyIsDown(LEFT_ARROW) && this.x > 1) {
+        if (keyIsDown(LEFT_ARROW) && this.x > 20) {
             this.move(-this.speed,0);
-        }else if (keyIsDown(RIGHT_ARROW) && this.x < 420) {
+        }else if (keyIsDown(RIGHT_ARROW) && this.x < 430) {
             this.move(this.speed,0);
         }
         if(keyIsDown(90) && this.delayShot == false){
             if(this.canonRigth){
-                phaseControler.shots.push(new Shot(this.x+12, this.y-10,25));
+                phaseControler.playerShots.push(new Shot(this.x+12, this.y-10,25));
                 this.canonRigth = false;
             }else{
-                phaseControler.shots.push(new Shot(this.x-12, this.y-10,25));
+                phaseControler.playerShots.push(new Shot(this.x-12, this.y-10,25));
                 this.canonRigth = true;
             }
             this.songShotPlayer.play();
