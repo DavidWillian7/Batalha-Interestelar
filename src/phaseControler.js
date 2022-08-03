@@ -4,7 +4,7 @@ class PhaseControler{
         this.enemys = [];
         this.playerShots = [];
         this.bossShots = [];
-        this.currentLevel = 5;
+        this.currentLevel = 1;
         this.enemysImg = imgEnemys;
         this.songShotBoss = shotBoss;
         this.delayShotBoss = false;
