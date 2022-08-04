@@ -27,7 +27,7 @@ function setup(){
     gameSize = 450;
     createCanvas(gameSize,gameSize);
     phaseControler = new PhaseControler();
-    phaseControler.setEnemys(phaseControler.currentLevel*10);
+    phaseControler.createEnemys(phaseControler.level*10);
     mapa = new Background();
 }
 
@@ -38,12 +38,14 @@ function draw(){
     phaseControler.drawHud();
     phaseControler.player.setPlayer();
     phaseControler.player.updatePlayer();
-    phaseControler.updateEnemys();
-    phaseControler.updateplayerShots();
-    phaseControler.checkColisionEnemy();
-    phaseControler.checkShotEnemy();
-    phaseControler.checkPlayerPoints();
-    if(phaseControler.currentLevel == 5){
+    if(phaseControler.level != 5){
+        phaseControler.updateEnemys();
+        phaseControler.updateplayerShots();
+        phaseControler.checkColisionEnemy();
+        phaseControler.checkShotEnemy();
+        phaseControler.checkPlayerPoints();
+    }else{
+        phaseControler.createBoss();
         phaseControler.updateBossShots();
     }
 }

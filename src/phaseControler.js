@@ -4,7 +4,7 @@ class PhaseControler{
         this.enemys = [];
         this.playerShots = [];
         this.bossShots = [];
-        this.currentLevel = 1;
+        this.level = 1;
         this.enemysImg = imgEnemys;
         this.songShotBoss = shotBoss;
         this.delayShotBoss = false;
@@ -24,7 +24,7 @@ class PhaseControler{
         textSize(12);
         textFont('Pixel');
         textAlign(CENTER);
-        text("Nível: "  + this.currentLevel, 400, 440);
+        text("Nível: "  + this.level, 400, 440);
 
         fill(255,255,255);
         textSize(12);
@@ -45,39 +45,39 @@ class PhaseControler{
         
     }
     
-    setEnemys(amount){
-        if(this.currentLevel != 5){
-            for(let i = 0; i < amount; i++){
-                let randomX = parseInt(random(40,410));
-                let randomY = parseInt(random(-200,-1000));
-                this.enemys.push(new Enemy(randomX,randomY,1));
-                this.enemys[i].shipEnemy = this.enemysImg[0];
-                if(this.currentLevel == 2 && i%2 == 0){
-                    this.enemys[i].type = 2;
-                    this.enemys[i].hp *= this.currentLevel;
-                    this.enemys[i].shipEnemy = this.enemysImg[this.currentLevel-1];
-                }else if(this.currentLevel == 3 && i%3 == 0){
-                    this.enemys[i].type = 3;
-                    this.enemys[i].hp *= this.currentLevel;
-                    this.enemys[i].shipEnemy = this.enemysImg[this.currentLevel-1];
-                }else if(this.currentLevel == 4 && i%4 == 0){
-                    this.enemys[i].type = 4;
-                    this.enemys[i].hp *= this.currentLevel;
-                    this.enemys[i].shipEnemy = this.enemysImg[this.currentLevel-1];
-                }
-            }
-        }else{
-            let randomX = parseInt(random(0,400));
-            let randomY = parseInt(random(60,90));
+    createEnemys(amount){
+        for(let i = 0; i < amount; i++){
+            let randomX = parseInt(random(40,410));
+            let randomY = parseInt(random(-200,-1000));
             this.enemys.push(new Enemy(randomX,randomY,1));
-            this.enemys[0].shipEnemy = this.enemysImg[this.currentLevel-1];
-            this.enemys[0].type = 5;
-            this.enemys[0].hp = 2000;
+            this.enemys[i].shipEnemy = this.enemysImg[0];
+            if(this.level == 2 && i%2 == 0){
+                this.enemys[i].type = 2;
+                this.enemys[i].hp *= this.level;
+                this.enemys[i].shipEnemy = this.enemysImg[this.level-1];
+            }else if(this.level == 3 && i%3 == 0){
+                this.enemys[i].type = 3;
+                this.enemys[i].hp *= this.level;
+                this.enemys[i].shipEnemy = this.enemysImg[this.level-1];
+            }else if(this.level == 4 && i%4 == 0){
+                this.enemys[i].type = 4;
+                this.enemys[i].hp *= this.level;
+                this.enemys[i].shipEnemy = this.enemysImg[this.level-1];
+            }
         }
     }
 
+    createBoss(){
+        let randomX = parseInt(random(0,400));
+        let randomY = parseInt(random(60,90));
+        this.enemys.push(new Enemy(randomX,randomY,1));
+        this.enemys[0].shipEnemy = this.enemysImg[this.level-1];
+        this.enemys[0].type = 5;
+        this.enemys[0].hp = 2000;
+    }
+
     updateEnemys(){
-        if(this.currentLevel != 5){
+        if(this.level != 5){
             for(let enemy of this.enemys){
                 if(enemy.y > 500 || enemy.x > 500){
                     enemy.x = parseInt(random(40,410));
@@ -143,7 +143,7 @@ class PhaseControler{
     }
 
     checkColisionEnemy(){
-        if(this.currentLevel != 5){
+        if(this.level != 5){
             if(this.enemys.length > 0){
                 for(let i = 0;i < this.enemys.length;i++){
                     if(dist(this.enemys[i].x, this.enemys[i].y,this.player.x,this.player.y) < 45){
@@ -166,7 +166,7 @@ class PhaseControler{
     }
 
     checkShotEnemy(){
-        if(this.currentLevel != 5){
+        if(this.level != 5){
             if(this.playerShots.length > 0 && this.enemys.length > 0){
                 for(let i = 0;i < this.enemys.length;i++){
                     for(let j = 0;j < this.playerShots.length;j++){
@@ -205,15 +205,15 @@ class PhaseControler{
     }
 
     checkPlayerPoints(){
-        if(this.player.points == this.currentLevel*100){
+        if(this.player.points == this.level*100){
             this.player.points = 0; 
-            this.currentLevel++;
-            this.spawnEnemys(this.currentLevel);
+            this.level++;
+            this.spawnEnemys(this.level);
         }
     }
 
     spawnEnemys(level){
-        this.setEnemys(level*10);
+        this.createEnemys(level*10);
     }
 
     delay(t){
