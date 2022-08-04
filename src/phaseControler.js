@@ -208,12 +208,12 @@ class PhaseControler{
         if(this.player.points == this.level*100){
             this.player.points = 0; 
             this.level++;
-            this.spawnEnemys(this.level);
+            if(this.level != 5){
+                this.createEnemys(this.level*10);
+            }else{
+                this.createBoss();
+            }
         }
-    }
-
-    spawnEnemys(level){
-        this.createEnemys(level*10);
     }
 
     delay(t){
