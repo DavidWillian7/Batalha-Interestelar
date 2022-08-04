@@ -12,16 +12,12 @@ function preload(){
     songShot = loadSound('../assets/songs/song-shot.wav');
     songEnemyExplosion = loadSound('../assets/songs/explosion.flac');
     shotBoss = loadSound('../assets/songs/shot-boss.wav');
-    imgEnemys.push(loadImage('../assets/enemy1.png'));
-    imgEnemys.push(loadImage('../assets/enemy2.png'));
-    imgEnemys.push(loadImage('../assets/enemy3.png'));
-    imgEnemys.push(loadImage('../assets/enemy4.png'));
-    imgEnemys.push(loadImage('../assets/boss.png'));
-    imgMaps.push(loadImage('../assets/map1.png'));
-    imgMaps.push(loadImage('../assets/map2.png'));
-    imgMaps.push(loadImage('../assets/map3.png'));
-    imgMaps.push(loadImage('../assets/map4.png'));
-    imgMaps.push(loadImage('../assets/mapBoss.png'));
+    for(let i = 1;i <= 5;i++){
+        imgEnemys.push(loadImage('../assets/enemy'+i+'.png'));
+    }
+    for(let i = 1;i <= 5;i++){
+        imgMaps.push(loadImage('../assets/map'+i+'.png'));
+    }
     for(let i = 1;i <= 48;i++){
         imgExplosion.push(loadImage('../assets/imgExplosion/img_'+i+'.png')); 
     }
