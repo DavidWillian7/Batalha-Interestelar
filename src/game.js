@@ -51,7 +51,7 @@ function draw(){
         phaseControler.updateEnemys();
         phaseControler.checkColisionEnemy();
         phaseControler.colisionShotEnemy();
-        phaseControler.checkPlayerPoints();
+        phaseControler.checkAmountEnemys();
     }else{
         phaseControler.drawBoss();
         phaseControler.updateBoss();
