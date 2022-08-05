@@ -48,7 +48,11 @@ function draw(){
     phaseControler.updatePlayerShots();;
     if(phaseControler.level != 5){
         phaseControler.drawEnemys();
-        phaseControler.updateEnemys();
+        if(phaseControler.enemys.length > 0){
+            phaseControler.enemys.forEach(enemy => {
+                enemy.updateEnemy();
+            });
+        }
         phaseControler.checkColisionEnemy();
         phaseControler.colisionShotEnemy();
         if(phaseControler.explosions.length > 0){
@@ -60,7 +64,7 @@ function draw(){
         phaseControler.checkAmountEnemys();
     }else{
         phaseControler.drawBoss();
-        phaseControler.updateBoss();
+        phaseControler.enemys[0].updateBoss();
         phaseControler.checkColisionBoss();
         phaseControler.colisionShotBoss();
         phaseControler.createShotBoss();

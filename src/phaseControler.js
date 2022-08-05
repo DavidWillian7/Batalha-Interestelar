@@ -5,9 +5,8 @@ class PhaseControler{
         this.playerShots = [];
         this.bossShots = [];
         this.explosions = [];
-        this.level = 1;
+        this.level = 4;
         this.delayShotBoss = false;
-        this.moveRigth = true;
     }
     
     changeHpcolor(){
@@ -71,16 +70,6 @@ class PhaseControler{
         this.enemys[0].shipEnemy = imgEnemys[this.level-1];
         this.enemys[0].hp = 1000;
     }
-
-    updateEnemys(){
-        for(let enemy of this.enemys){
-            enemy.move(0,2);
-            if(enemy.y > 500 || enemy.x > 500){
-                enemy.x = parseInt(random(40,410));
-                enemy.y = parseInt(random(-100,-1000));
-            }
-        }
-    }
     
     drawEnemys(){
         for(let enemy of this.enemys){
@@ -88,21 +77,6 @@ class PhaseControler{
             imageMode(CENTER);
             image(enemy.shipEnemy,enemy.x,enemy.y,40,40);
         }
-    }
-        
-    updateBoss(){
-        if(this.enemys[0].x <= 400 && this.moveRigth == true){
-            this.enemys[0].move(2,0);
-            if(this.enemys[0].x >= 401){
-                this.moveRigth = false;
-            }
-            }
-            else if(this.enemys[0].x >= 50 && this.moveRigth == false){
-                this.enemys[0].move(-2,0);
-                if(this.enemys[0].x <= 49){
-                    this.moveRigth = true;
-                }
-            }
     }
 
     drawBoss(){
