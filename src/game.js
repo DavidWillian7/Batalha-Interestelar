@@ -1,6 +1,9 @@
 let songShotPlayer;
+let songShotBoss;
 let songEnemyExplosion;
-let shotSongBoss;
+let ship;
+let shotPlayer;
+let shotBoss;
 let imgEnemys = [];
 let imgMaps = [];
 let imgExplosion = [];
@@ -11,7 +14,10 @@ function preload(){
     let gameSize;
     songShotPlayer = loadSound('../assets/songs/song-shot.wav');
     songEnemyExplosion = loadSound('../assets/songs/explosion.flac');
-    shotSongBoss = loadSound('../assets/songs/shot-boss.wav');
+    songShotBoss = loadSound('../assets/songs/shot-boss.wav');
+    shotPlayer = loadImage('../assets/shot.png');
+    shotBoss = loadImage('../assets/shotBoss.png');
+    ship = loadImage('../assets/ship.png');
     for(let i = 1;i <= 5;i++){
         imgEnemys.push(loadImage('../assets/enemy'+i+'.png'));
     }

@@ -105,8 +105,8 @@ class PhaseControler{
             image(this.enemys[0].shipEnemy,this.enemys[0].x,this.enemys[0].y,120,120);
             if(this.delayShotBoss == false){
                 this.bossShots.push(new Shot(this.enemys[0].x, this.enemys[0].y+50,25));
-                shotSongBoss.play();
-                shotSongBoss.setVolume(0.3);
+                songShotBoss.play();
+                songShotBoss.setVolume(0.3);
                 this.delayShotBoss = true;
                 this.delay(70);
             }
@@ -122,7 +122,7 @@ class PhaseControler{
                 shot.move(0,-2);
                 circle(shot.x,shot.y,15);
                 imageMode(CENTER);
-                image(shot.shotImg,shot.x,shot.y,6,15);
+                image(shotPlayer,shot.x,shot.y,6,15);
             }
         } 
     }
@@ -134,8 +134,9 @@ class PhaseControler{
             }
             else{
                 shot.move(0,2);
-                fill(255,255,255);
                 circle(shot.x,shot.y,15);
+                imageMode(CENTER);
+                image(shotBoss,shot.x,shot.y,15,15);
             }
         }
     }
