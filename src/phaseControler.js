@@ -171,6 +171,7 @@ class PhaseControler{
                         this.player.hp -= 10;
                     }
                     this.playExplosion();
+                    this.explosions.push(new Explosion(this.enemys[i].x,this.enemys[i].y));
                     this.enemys.splice(i,1);
                      break;
                 }
