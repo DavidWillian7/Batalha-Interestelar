@@ -75,41 +75,51 @@ class PhaseControler{
     }
 
     updateEnemys(){
-        if(this.level != 5){
-            for(let enemy of this.enemys){
-                if(enemy.y > 500 || enemy.x > 500){
-                    enemy.x = parseInt(random(40,410));
-                    enemy.y = parseInt(random(-100,-1000));
-                }
-                else{
-                    enemy.move(0,2);
-                    circle(enemy.x,enemy.y,45);
-                    imageMode(CENTER);
-                    image(enemy.shipEnemy,enemy.x,enemy.y,40,40);
-                }
+        for(let enemy of this.enemys){
+            if(enemy.y > 500 || enemy.x > 500){
+                enemy.x = parseInt(random(40,410));
+                enemy.y = parseInt(random(-100,-1000));
             }
-        }else{
-            if(this.enemys[0].x <= 400 && this.enemys[0].moveRigth == true){
-                this.enemys[0].move(2,0);
-                if(this.enemys[0].x >= 401){
-                    this.enemys[0].moveRigth = false;
-                }
-            }else if(this.enemys[0].x >= 50 && this.enemys[0].moveRigth == false){
+        }
+    }
+    
+    drawEnemys(){
+        for(let enemy of this.enemys){
+            enemy.move(0,2);
+            circle(enemy.x,enemy.y,45);
+            imageMode(CENTER);
+            image(enemy.shipEnemy,enemy.x,enemy.y,40,40);
+        }
+    }
+        
+    updateBoss(){
+        if(this.enemys[0].x <= 400 && this.enemys[0].moveRigth == true){
+            this.enemys[0].move(2,0);
+            if(this.enemys[0].x >= 401){
+                this.enemys[0].moveRigth = false;
+            }
+            }
+            else if(this.enemys[0].x >= 50 && this.enemys[0].moveRigth == false){
                 this.enemys[0].move(-2,0);
                 if(this.enemys[0].x <= 49){
                     this.enemys[0].moveRigth = true;
                 }
             }
-            circle(this.enemys[0].x,this.enemys[0].y,120);
-            imageMode(CENTER);
-            image(this.enemys[0].shipEnemy,this.enemys[0].x,this.enemys[0].y,120,120);
-            if(this.delayShotBoss == false){
-                this.bossShots.push(new Shot(this.enemys[0].x, this.enemys[0].y+50,25));
-                songShotBoss.play();
-                songShotBoss.setVolume(0.3);
-                this.delayShotBoss = true;
-                this.delay(70);
-            }
+    }
+
+    drawBoss(){
+        circle(this.enemys[0].x,this.enemys[0].y,120);
+        imageMode(CENTER);
+        image(this.enemys[0].shipEnemy,this.enemys[0].x,this.enemys[0].y,120,120);
+    }
+
+    createShotBoss(){
+        if(this.delayShotBoss == false){
+            this.bossShots.push(new Shot(this.enemys[0].x, this.enemys[0].y+50,25));
+            songShotBoss.play();
+            songShotBoss.setVolume(0.3);
+            this.delayShotBoss = true;
+            this.delay(70);
         }
     }
 
