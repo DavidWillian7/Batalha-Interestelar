@@ -6,6 +6,7 @@ class PhaseControler{
         this.bossShots = [];
         this.level = 1;
         this.delayShotBoss = false;
+        this.moveRigth = true;
     }
     
     changeHpcolor(){
@@ -89,16 +90,16 @@ class PhaseControler{
     }
         
     updateBoss(){
-        if(this.enemys[0].x <= 400 && this.enemys[0].moveRigth == true){
+        if(this.enemys[0].x <= 400 && this.moveRigth == true){
             this.enemys[0].move(2,0);
             if(this.enemys[0].x >= 401){
-                this.enemys[0].moveRigth = false;
+                this.moveRigth = false;
             }
             }
-            else if(this.enemys[0].x >= 50 && this.enemys[0].moveRigth == false){
+            else if(this.enemys[0].x >= 50 && this.moveRigth == false){
                 this.enemys[0].move(-2,0);
                 if(this.enemys[0].x <= 49){
-                    this.enemys[0].moveRigth = true;
+                    this.moveRigth = true;
                 }
             }
     }
@@ -146,7 +147,7 @@ class PhaseControler{
 
     drawShotsBoss(){
         for(let shot of this.bossShots){
-            shot.move(0,2);
+            shot.move(-1,2);
             circle(shot.x,shot.y,15);
             imageMode(CENTER);
             image(shotBoss,shot.x,shot.y,15,15);
