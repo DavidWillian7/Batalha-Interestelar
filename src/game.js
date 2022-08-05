@@ -55,7 +55,7 @@ function draw(){
     }else{
         phaseControler.drawBoss();
         phaseControler.updateBoss();
-        phaseControler.checkColisionEnemy();
+        phaseControler.checkColisionBoss();
         phaseControler.checkShotEnemy();
         phaseControler.createShotBoss();
         phaseControler.drawShotsBoss();

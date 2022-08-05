@@ -158,25 +158,25 @@ class PhaseControler{
     }
 
     checkColisionEnemy(){
-        if(this.level != 5){
-            if(this.enemys.length > 0){
-                for(let i = 0;i < this.enemys.length;i++){
-                    if(dist(this.enemys[i].x, this.enemys[i].y,this.player.x,this.player.y) < 45){
-                        if(this.enemys[i].type != 1){
-                            this.player.hp -= (10*this.enemys[i].type);
-                        }else{
-                            this.player.hp -= 10;
-                        }
-                        this.player.points += 10;
-                        this.enemys.splice(i,1);
-                        break;
+        if(this.enemys.length > 0){
+            for(let i = 0;i < this.enemys.length;i++){
+                if(dist(this.enemys[i].x, this.enemys[i].y,this.player.x,this.player.y) < 45){
+                    if(this.enemys[i].type != 1){
+                        this.player.hp -= (10*this.enemys[i].type);
+                    }else{
+                        this.player.hp -= 10;
+                    }
+                    this.player.points += 10;
+                    this.enemys.splice(i,1);
+                     break;
                     }
                 }
             }
-        }else{
-            if(dist(this.enemys[0].x, this.enemys[0].y,this.player.x,this.player.y) < 82.5){
-                this.player.hp -= (10*this.enemys[0].type);
-            }
+    }
+    
+    checkColisionBoss(){
+        if(dist(this.enemys[0].x, this.enemys[0].y,this.player.x,this.player.y) < 82.5){
+            this.player.hp -= (10*this.enemys[0].type);
         }
     }
 
