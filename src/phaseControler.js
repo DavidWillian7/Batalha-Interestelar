@@ -113,18 +113,21 @@ class PhaseControler{
         }
     }
 
-    updateplayerShots(){
+    updatePlayerShots(){
         for(let shot of this.playerShots){
             if(shot.y < 0){
                 this.playerShots.splice(shot,1);
             }
-            else{
-                shot.move(0,-2);
-                circle(shot.x,shot.y,15);
-                imageMode(CENTER);
-                image(shotPlayer,shot.x,shot.y,6,15);
-            }
-        } 
+        }
+    }
+
+    drawPlayerShots(){
+        for(let shot of this.playerShots){
+            shot.move(0,-2);
+            circle(shot.x,shot.y,15);
+            imageMode(CENTER);
+            image(shotPlayer,shot.x,shot.y,6,15);
+        }
     }
 
     updateBossShots(){

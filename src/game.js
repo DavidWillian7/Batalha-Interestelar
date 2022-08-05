@@ -44,7 +44,8 @@ function draw(){
     phaseControler.drawHud();
     phaseControler.player.drawPlayer();
     phaseControler.player.updatePlayer()
-    phaseControler.updateplayerShots();;
+    phaseControler.drawPlayerShots();
+    phaseControler.updatePlayerShots();;
     if(phaseControler.level != 5){
         phaseControler.updateEnemys();
         phaseControler.checkColisionEnemy();
