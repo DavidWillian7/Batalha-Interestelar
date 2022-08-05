@@ -42,7 +42,7 @@ function draw(){
     imageMode(CORNER);
     image(mapa.checkBackground(),0,0,gameSize,gameSize);
     phaseControler.drawHud();
-    phaseControler.player.setPlayer();
+    phaseControler.player.drawPlayer();
     phaseControler.player.updatePlayer()
     phaseControler.updateplayerShots();;
     if(phaseControler.level != 5){
@@ -54,7 +54,6 @@ function draw(){
         phaseControler.updateEnemys();
         phaseControler.checkColisionEnemy();
         phaseControler.checkShotEnemy();
-        //phaseControler.checkPlayerPoints();
         phaseControler.updateBossShots();
     }
 }

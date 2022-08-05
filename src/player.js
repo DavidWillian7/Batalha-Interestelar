@@ -43,7 +43,7 @@ class Player extends GenericEntity{
         }
     }
 
-    setPlayer(){
+    drawPlayer(){
         noStroke();
         noFill();
         circle(this.x,this.y,45);
