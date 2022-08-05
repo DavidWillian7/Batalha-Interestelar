@@ -135,12 +135,15 @@ class PhaseControler{
             if(shot.y > 450){
                 this.bossShots.splice(shot,1);
             }
-            else{
-                shot.move(0,2);
-                circle(shot.x,shot.y,15);
-                imageMode(CENTER);
-                image(shotBoss,shot.x,shot.y,15,15);
-            }
+        }
+    }
+
+    drawShotsBoss(){
+        for(let shot of this.bossShots){
+            shot.move(0,2);
+            circle(shot.x,shot.y,15);
+            imageMode(CENTER);
+            image(shotBoss,shot.x,shot.y,15,15);
         }
     }
 
