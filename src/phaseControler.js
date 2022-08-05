@@ -4,9 +4,7 @@ class PhaseControler{
         this.enemys = [];
         this.playerShots = [];
         this.bossShots = [];
-        this.level = 1;
-        this.enemysImg = imgEnemys;
-        this.songShotBoss = shotBoss;
+        this.level = 4;
         this.delayShotBoss = false;
     }
     
@@ -50,19 +48,19 @@ class PhaseControler{
             let randomX = parseInt(random(40,410));
             let randomY = parseInt(random(-200,-1000));
             this.enemys.push(new Enemy(randomX,randomY,1));
-            this.enemys[i].shipEnemy = this.enemysImg[0];
+            this.enemys[i].shipEnemy = imgEnemys[0];
             if(this.level == 2 && i%2 == 0){
                 this.enemys[i].type = 2;
                 this.enemys[i].hp *= this.level;
-                this.enemys[i].shipEnemy = this.enemysImg[this.level-1];
+                this.enemys[i].shipEnemy = imgEnemys[this.level-1];
             }else if(this.level == 3 && i%3 == 0){
                 this.enemys[i].type = 3;
                 this.enemys[i].hp *= this.level;
-                this.enemys[i].shipEnemy = this.enemysImg[this.level-1];
+                this.enemys[i].shipEnemy = imgEnemys[this.level-1];
             }else if(this.level == 4 && i%4 == 0){
                 this.enemys[i].type = 4;
                 this.enemys[i].hp *= this.level;
-                this.enemys[i].shipEnemy = this.enemysImg[this.level-1];
+                this.enemys[i].shipEnemy = imgEnemys[this.level-1];
             }
         }
     }
@@ -71,7 +69,7 @@ class PhaseControler{
         let randomX = parseInt(random(0,400));
         let randomY = parseInt(random(60,90));
         this.enemys.push(new Enemy(randomX,randomY,1));
-        this.enemys[0].shipEnemy = this.enemysImg[this.level-1];
+        this.enemys[0].shipEnemy = imgEnemys[this.level-1];
         this.enemys[0].type = 5;
         this.enemys[0].hp = 2000;
     }
@@ -107,8 +105,8 @@ class PhaseControler{
             image(this.enemys[0].shipEnemy,this.enemys[0].x,this.enemys[0].y,120,120);
             if(this.delayShotBoss == false){
                 this.bossShots.push(new Shot(this.enemys[0].x, this.enemys[0].y+50,25));
-                this.songShotBoss.play();
-                this.songShotBoss.setVolume(0.3);
+                shotSongBoss.play();
+                shotSongBoss.setVolume(0.3);
                 this.delayShotBoss = true;
                 this.delay(70);
             }
@@ -174,8 +172,8 @@ class PhaseControler{
                             this.enemys[i].hp -= 10;
                             if(this.enemys[i].hp == 0){
                                 this.enemys[i].move(0,0);
-                                this.enemys[i].enemyExplosionSong.play();
-                                this.enemys[i].enemyExplosionSong.setVolume(0.3);
+                                songEnemyExplosion.play();
+                                songEnemyExplosion.setVolume(0.3);
                                 this.enemys[i].explosionEnemy(this.enemys[i].x,this.enemys[i].y);
                                 this.enemys.splice(i,1);
                                 this.player.points += 10;

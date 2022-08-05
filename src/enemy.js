@@ -5,14 +5,12 @@ class Enemy extends GenericEntity{
         this.shipEnemy;
         this.type =1;
         this.moveRigth = true;
-        this.enemyExplosionSong = songEnemyExplosion;
-        this.explosionImg = imgExplosion;
     }
 
     explosionEnemy(x,y){
-        for(let i = 0;i < this.explosionImg.length;i++){
+        for(let i = 0;i < imgExplosion.length;i++){
             imageMode(CENTER);
-            image(this.explosionImg[i],x,y,40,40);
+            image(imgExplosion[i],x,y,40,40);
         }
     }
 };
