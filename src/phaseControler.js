@@ -180,40 +180,40 @@ class PhaseControler{
         }
     }
 
-    checkShotEnemy(){
-        if(this.level != 5){
-            if(this.playerShots.length > 0 && this.enemys.length > 0){
-                for(let i = 0;i < this.enemys.length;i++){
-                    for(let j = 0;j < this.playerShots.length;j++){
-                        if(dist(this.enemys[i].x, this.enemys[i].y,this.playerShots[j].x,this.playerShots[j].y) < 30){
-                            this.enemys[i].hp -= 10;
-                            if(this.enemys[i].hp == 0){
-                                this.enemys[i].move(0,0);
-                                songEnemyExplosion.play();
-                                songEnemyExplosion.setVolume(0.3);
-                                this.enemys[i].explosionEnemy(this.enemys[i].x,this.enemys[i].y);
-                                this.enemys.splice(i,1);
-                                this.player.points += 10;
-                            }
-                            this.playerShots.splice(j,1);
-                            break;
+    colisionShotEnemy(){
+        if(this.playerShots.length > 0 && this.enemys.length > 0){
+            for(let i = 0;i < this.enemys.length;i++){
+                for(let j = 0;j < this.playerShots.length;j++){
+                    if(dist(this.enemys[i].x, this.enemys[i].y,this.playerShots[j].x,this.playerShots[j].y) < 30){
+                        this.enemys[i].hp -= 10;
+                        if(this.enemys[i].hp == 0){
+                            this.enemys[i].move(0,0);
+                            songEnemyExplosion.play();
+                            songEnemyExplosion.setVolume(0.3);
+                            this.enemys[i].explosionEnemy(this.enemys[i].x,this.enemys[i].y);
+                            this.enemys.splice(i,1);
+                            this.player.points += 10;
                         }
+                        this.playerShots.splice(j,1);
+                        break;
                     }
                 }
             }
-        }else{
-            if(this.playerShots.length > 0){
-                for(let i = 0;i < this.playerShots.length;i++){
-                    if(dist(this.playerShots[i].x,this.playerShots[i].y,this.enemys[0].x,this.enemys[0].y) < 67.5){
-                        this.enemys[0].hp -= 10;
-                        if(this.enemys[0].hp == 0){
-                            this.enemys[0].enemyExplosionSong.play();
-                            this.enemys.splice(0,1);
-                            this.player.points += 10;
-                        }
-                        this.playerShots.splice(i,1);
-                        break;
+        }
+    }
+
+    colisionShotBoss(){
+        if(this.playerShots.length > 0){
+            for(let i = 0;i < this.playerShots.length;i++){
+                if(dist(this.playerShots[i].x,this.playerShots[i].y,this.enemys[0].x,this.enemys[0].y) < 67.5){
+                    this.enemys[0].hp -= 10;
+                    if(this.enemys[0].hp == 0){
+                        this.enemys[0].enemyExplosionSong.play();
+                        this.enemys.splice(0,1);
+                        this.player.points += 10000;
                     }
+                    this.playerShots.splice(i,1);
+                    break;
                 }
             }
         }
