@@ -4,7 +4,7 @@ class PhaseControler{
         this.enemys = [];
         this.playerShots = [];
         this.bossShots = [];
-        this.level = 1;
+        this.level = 4;
         this.delayShotBoss = false;
         this.moveRigth = true;
     }
@@ -73,6 +73,7 @@ class PhaseControler{
 
     updateEnemys(){
         for(let enemy of this.enemys){
+            enemy.move(0,2);
             if(enemy.y > 500 || enemy.x > 500){
                 enemy.x = parseInt(random(40,410));
                 enemy.y = parseInt(random(-100,-1000));
@@ -82,7 +83,6 @@ class PhaseControler{
     
     drawEnemys(){
         for(let enemy of this.enemys){
-            enemy.move(0,2);
             circle(enemy.x,enemy.y,45);
             imageMode(CENTER);
             image(enemy.shipEnemy,enemy.x,enemy.y,40,40);
@@ -122,6 +122,7 @@ class PhaseControler{
 
     updatePlayerShots(){
         for(let shot of this.playerShots){
+            shot.move(0,-2);
             if(shot.y < 0){
                 this.playerShots.splice(shot,1);
             }
@@ -130,7 +131,6 @@ class PhaseControler{
 
     drawPlayerShots(){
         for(let shot of this.playerShots){
-            shot.move(0,-2);
             circle(shot.x,shot.y,15);
             imageMode(CENTER);
             image(shotPlayer,shot.x,shot.y,6,15);
@@ -139,6 +139,12 @@ class PhaseControler{
 
     updateBossShots(){
         for(let shot of this.bossShots){
+            if(this.enemys[0].x <= 400 ){
+                shot.move(1,2);
+            }
+            else if(this.enemys[0].x >= 50){
+                shot.move(-1,2);
+            }
             if(shot.y > 450){
                 this.bossShots.splice(shot,1);
             }
@@ -147,7 +153,6 @@ class PhaseControler{
 
     drawShotsBoss(){
         for(let shot of this.bossShots){
-            shot.move(-1,2);
             circle(shot.x,shot.y,15);
             imageMode(CENTER);
             image(shotBoss,shot.x,shot.y,15,15);
