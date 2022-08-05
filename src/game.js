@@ -60,5 +60,6 @@ function draw(){
         phaseControler.createShotBoss();
         phaseControler.drawShotsBoss();
         phaseControler.updateBossShots();
+        phaseControler.colisionBossShotPlayer();
     }
 }

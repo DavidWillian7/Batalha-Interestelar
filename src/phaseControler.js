@@ -68,7 +68,7 @@ class PhaseControler{
         let randomY = parseInt(random(60,90));
         this.enemys.push(new Enemy(randomX,randomY,1));
         this.enemys[0].shipEnemy = imgEnemys[this.level-1];
-        this.enemys[0].hp = 2000;
+        this.enemys[0].hp = 1000;
     }
 
     updateEnemys(){
@@ -215,6 +215,17 @@ class PhaseControler{
                     }
                     this.playerShots.splice(i,1);
                     break;
+                }
+            }
+        }
+    }
+
+    colisionBossShotPlayer(){
+        if(this.bossShots.length > 0){
+            for(let i = 0;i < this.bossShots.length;i++){
+                if(dist(this.bossShots[i].x,this.bossShots[i].y,this.player.x,this.player.y) < 30){
+                    this.player.hp -= 15;
+                    this.bossShots.splice(i,1);
                 }
             }
         }
