@@ -70,20 +70,6 @@ class PhaseControler{
         this.enemys[0].shipEnemy = imgEnemys[this.level-1];
         this.enemys[0].hp = 1000;
     }
-    
-    drawEnemys(){
-        for(let enemy of this.enemys){
-            circle(enemy.x,enemy.y,45);
-            imageMode(CENTER);
-            image(enemy.shipEnemy,enemy.x,enemy.y,40,40);
-        }
-    }
-
-    drawBoss(){
-        circle(this.enemys[0].x,this.enemys[0].y,120);
-        imageMode(CENTER);
-        image(this.enemys[0].shipEnemy,this.enemys[0].x,this.enemys[0].y,120,120);
-    }
 
     createShotBoss(){
         if(this.delayShotBoss == false){
@@ -93,23 +79,6 @@ class PhaseControler{
             songShotBoss.setVolume(0.3);
             this.delayShotBoss = true;
             this.delay(70);
-        }
-    }
-
-    updatePlayerShots(){
-        for(let shot of this.playerShots){
-            shot.move(0,-2);
-            if(shot.y < 0){
-                this.playerShots.splice(shot,1);
-            }
-        }
-    }
-
-    drawPlayerShots(){
-        for(let shot of this.playerShots){
-            circle(shot.x,shot.y,15);
-            imageMode(CENTER);
-            image(shotPlayer,shot.x,shot.y,6,15);
         }
     }
 

@@ -44,12 +44,18 @@ function draw(){
     phaseControler.drawHud();
     phaseControler.player.drawPlayer();
     phaseControler.player.updatePlayer()
-    phaseControler.drawPlayerShots();
-    phaseControler.updatePlayerShots();;
+
+    if(phaseControler.playerShots.length > 0){
+        phaseControler.playerShots.forEach(shot => {
+            shot.drawPlayerShot();
+            shot.updatePlayerShot();
+        });
+    }
+    
     if(phaseControler.level != 5){
-        phaseControler.drawEnemys();
         if(phaseControler.enemys.length > 0){
             phaseControler.enemys.forEach(enemy => {
+                enemy.drawEnemys();
                 enemy.updateEnemy();
             });
         }
@@ -63,7 +69,7 @@ function draw(){
         }
         phaseControler.checkAmountEnemys();
     }else{
-        phaseControler.drawBoss();
+        phaseControler.enemys[0].drawBoss();
         phaseControler.enemys[0].updateBoss();
         phaseControler.checkColisionBoss();
         phaseControler.colisionShotBoss();

@@ -14,6 +14,12 @@ class Enemy extends GenericEntity{
         }
     }
 
+    drawEnemys(){
+        circle(this.x,this.y,45);
+        imageMode(CENTER);
+        image(this.shipEnemy,this.x,this.y,40,40);
+    }
+
     updateBoss(){
         if(this.x <= 400 && this.moveRigth == true){
             this.move(2, 0);
@@ -27,6 +33,12 @@ class Enemy extends GenericEntity{
                 this.moveRigth = true;
             }
         }
+    }
+
+    drawBoss(){
+        circle(this.x,this.y,120);
+        imageMode(CENTER);
+        image(this.shipEnemy,this.x,this.y,120,120);
     }
 
 };
