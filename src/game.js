@@ -51,6 +51,12 @@ function draw(){
         phaseControler.updateEnemys();
         phaseControler.checkColisionEnemy();
         phaseControler.colisionShotEnemy();
+        if(phaseControler.explosion.length > 0){
+            phaseControler.explosion.map(element => {
+                element.drawExplosion();
+                element.updateExplosion();
+            });
+        }
         phaseControler.checkAmountEnemys();
     }else{
         phaseControler.drawBoss();
