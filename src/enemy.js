@@ -3,7 +3,6 @@ class Enemy extends GenericEntity{
         super(x,y,speed);
         this.hp = 10;
         this.shipEnemy;
-        this.type =1;
         this.moveRigth = true;
     }
 

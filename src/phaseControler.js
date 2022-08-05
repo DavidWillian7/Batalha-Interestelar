@@ -50,15 +50,12 @@ class PhaseControler{
             this.enemys.push(new Enemy(randomX,randomY,1));
             this.enemys[i].shipEnemy = imgEnemys[0];
             if(this.level == 2 && i%2 == 0){
-                this.enemys[i].type = 2;
                 this.enemys[i].hp *= this.level;
                 this.enemys[i].shipEnemy = imgEnemys[this.level-1];
             }else if(this.level == 3 && i%3 == 0){
-                this.enemys[i].type = 3;
                 this.enemys[i].hp *= this.level;
                 this.enemys[i].shipEnemy = imgEnemys[this.level-1];
             }else if(this.level == 4 && i%4 == 0){
-                this.enemys[i].type = 4;
                 this.enemys[i].hp *= this.level;
                 this.enemys[i].shipEnemy = imgEnemys[this.level-1];
             }
@@ -70,7 +67,6 @@ class PhaseControler{
         let randomY = parseInt(random(60,90));
         this.enemys.push(new Enemy(randomX,randomY,1));
         this.enemys[0].shipEnemy = imgEnemys[this.level-1];
-        this.enemys[0].type = 5;
         this.enemys[0].hp = 2000;
     }
 
@@ -166,8 +162,8 @@ class PhaseControler{
         if(this.enemys.length > 0){
             for(let i = 0;i < this.enemys.length;i++){
                 if(dist(this.enemys[i].x, this.enemys[i].y,this.player.x,this.player.y) < 45){
-                    if(this.enemys[i].type != 1){
-                        this.player.hp -= (10*this.enemys[i].type);
+                    if(this.level != 1){
+                        this.player.hp -= (10*this.level);
                     }else{
                         this.player.hp -= 10;
                     }
@@ -181,7 +177,7 @@ class PhaseControler{
     
     checkColisionBoss(){
         if(dist(this.enemys[0].x, this.enemys[0].y,this.player.x,this.player.y) < 82.5){
-            this.player.hp -= (10*this.enemys[0].type);
+            this.player.hp -= (10*this.level);
         }
     }
 
@@ -195,7 +191,7 @@ class PhaseControler{
                             this.playExplosion()
                             this.enemys[i].explosionEnemy(this.enemys[i].x,this.enemys[i].y);
                             this.enemys.splice(i,1);
-                            this.player.points += 100;
+                            this.player.points += 102;
                         }
                         this.playerShots.splice(j,1);
                         break;
