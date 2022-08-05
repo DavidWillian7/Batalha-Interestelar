@@ -112,7 +112,8 @@ class PhaseControler{
 
     createShotBoss(){
         if(this.delayShotBoss == false){
-            this.bossShots.push(new Shot(this.enemys[0].x, this.enemys[0].y+50,25));
+            this.bossShots.push(new Shot(this.enemys[0].x+35, this.enemys[0].y+50,25));
+            this.bossShots.push(new Shot(this.enemys[0].x-35, this.enemys[0].y+50,25));
             songShotBoss.play();
             songShotBoss.setVolume(0.3);
             this.delayShotBoss = true;
@@ -139,12 +140,7 @@ class PhaseControler{
 
     updateBossShots(){
         for(let shot of this.bossShots){
-            if(this.enemys[0].x <= 400 ){
-                shot.move(1,2);
-            }
-            else if(this.enemys[0].x >= 50){
-                shot.move(-1,2);
-            }
+            shot.move(0,2);
             if(shot.y > 450){
                 this.bossShots.splice(shot,1);
             }
