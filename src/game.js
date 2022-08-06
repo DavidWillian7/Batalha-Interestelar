@@ -74,8 +74,14 @@ function draw(){
         phaseControler.checkColisionBoss();
         phaseControler.colisionShotBoss();
         phaseControler.createShotBoss();
-        phaseControler.drawShotsBoss();
-        phaseControler.updateBossShots();
+        
+        if(phaseControler.bossShots.length > 0){
+            phaseControler.bossShots.forEach(bossShot => {
+                bossShot.drawShotBoss();
+                bossShot.updateBossShot();
+            });
+        }
+
         phaseControler.colisionBossShotPlayer();
     }
 }

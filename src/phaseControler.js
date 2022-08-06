@@ -82,23 +82,6 @@ class PhaseControler{
         }
     }
 
-    updateBossShots(){
-        for(let shot of this.bossShots){
-            shot.move(0,2);
-            if(shot.y > 450){
-                this.bossShots.splice(shot,1);
-            }
-        }
-    }
-
-    drawShotsBoss(){
-        for(let shot of this.bossShots){
-            circle(shot.x,shot.y,15);
-            imageMode(CENTER);
-            image(shotBoss,shot.x,shot.y,15,15);
-        }
-    }
-
     playExplosion(){
         songEnemyExplosion.play();
         songEnemyExplosion.setVolume(0.3);

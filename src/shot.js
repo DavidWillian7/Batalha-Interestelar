@@ -16,4 +16,17 @@ class Shot extends GenericEntity{
         image(shotPlayer,this.x,this.y,6,15);
     }
 
+    updateBossShot(){
+        this.move(0,2);
+        if(this.y > 450){
+            phaseControler.bossShots.splice(this,1);
+        }
+    }
+
+    drawShotBoss(){
+        circle(this.x,this.y,15);
+        imageMode(CENTER);
+        image(shotBoss,this.x,this.y,15,15);
+    }
+
 }
