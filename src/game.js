@@ -7,6 +7,8 @@ let shotBoss;
 let imgEnemys = [];
 let imgMaps = [];
 let imgExplosion = [];
+let imgLife;
+let imgClock;
 
 function preload(){
     let phaseControler;
@@ -17,6 +19,8 @@ function preload(){
     shotPlayer = loadImage('../assets/shot.png');
     shotBoss = loadImage('../assets/shotBoss.png');
     ship = loadImage('../assets/ship.png');
+    imgLife = loadImage('../assets/heart.png');
+    imgClock = loadImage('../assets/clock.png');
     for(let i = 1;i <= 5;i++){
         imgEnemys.push(loadImage('../assets/enemy'+i+'.png'));
     }
@@ -58,6 +62,13 @@ function draw(){
             });
         }
 
+        if(phaseControler.bonus.length > 0){
+            for(let i = 0;i < phaseControler.bonus.length;i++){
+                phaseControler.bonus[i].draw();
+                phaseControler.bonus[i].update(i);
+            }
+        }
+
         if(phaseControler.explosions.length > 0){
             phaseControler.explosions.forEach(explosion => {
                 explosion.drawExplosion();
@@ -65,6 +76,7 @@ function draw(){
             });
         }
 
+        phaseControler.checkColisionPlayerBonus();
         phaseControler.checkColisionEnemy();
         phaseControler.colisionShotEnemy();
 

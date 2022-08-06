@@ -5,6 +5,7 @@ class PhaseControler{
         this.playerShots = [];
         this.bossShots = [];
         this.explosions = [];
+        this.bonus = [];
         this.level = 1;
         this.delayShotBoss = false;
     }
@@ -134,6 +135,7 @@ class PhaseControler{
                         if(this.enemys[i].hp == 0){
                             this.playExplosion()
                             this.explosions.push(new Explosion(this.enemys[i].x,this.enemys[i].y));
+                            this.checkDropChance(0.2,this.enemys[i].x,this.enemys[i].y,1);
                             this.enemys.splice(i,1);
                             this.player.points += 102;
                             if(this.enemys.length == 0){
@@ -195,4 +197,39 @@ class PhaseControler{
             t * 10
         );
     }
+
+    checkDropChance(dropChance,x,y,speed){
+        if(Math.random() <= dropChance){
+            this.bonus.push(this.dropBonus(x,y,speed));
+        }
+    }
+    
+    dropBonus(x,y,speed){
+        if(Math.random() < 0.5){
+            return new LifeBonus(x,y,speed);
+        }
+        else{
+            return new VelocityShotBonus(x,y,speed);
+        }
+    }
+
+    checkColisionPlayerBonus(){
+        if(this.bonus.length > 0){
+            for(let i = 0;i < this.bonus.length;i++){
+                if(dist(this.bonus[i].x, this.bonus[i].y,this.player.x,this.player.y) < 35){
+                    this.bonus[i].applyBonus(this.player);
+                    this.checkLifePlayer();
+                    this.bonus.splice(i,1);
+                     break;
+                }
+            }
+        }
+    }
+
+    checkLifePlayer(){
+        if(this.player.hp > 100){
+            this.player.hp = 100;
+        }
+    }
+
 }
