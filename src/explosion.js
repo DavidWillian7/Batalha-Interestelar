@@ -6,8 +6,8 @@ class Explosion{
     }
 
     updateExplosion(){
-		this.frame++;
-		if(this.frame >= imgExplosion.length){
+        this.frame++;
+		if(this.frame == imgExplosion.length){
 			phaseControler.explosions.splice(this, 1);
 		}
     }

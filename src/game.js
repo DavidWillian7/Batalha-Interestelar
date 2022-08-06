@@ -41,7 +41,7 @@ function draw(){
     image(phaseControler.changeBackground(),0,0,gameSize,gameSize);
     phaseControler.drawHud();
     phaseControler.player.drawPlayer();
-    phaseControler.player.updatePlayer()
+    phaseControler.player.updatePlayer();
 
     if(phaseControler.playerShots.length > 0){
         phaseControler.playerShots.forEach(shot => {
@@ -57,16 +57,20 @@ function draw(){
                 enemy.updateEnemy();
             });
         }
+
         phaseControler.checkColisionEnemy();
         phaseControler.colisionShotEnemy();
-        if(phaseControler.explosions.length > 0){
-            phaseControler.explosions.forEach(explosion => {
-                explosion.drawExplosion();
-                explosion.updateExplosion();
-            });
-        }
+
+        /*if(phaseControler.explosions.length > 0){
+            for(let i = 0;i < phaseControler.explosions.length;i++){
+                phaseControler.explosions[i].drawExplosion();
+                phaseControler.explosions[i].updateExplosion();
+            }
+        }*/
+
         phaseControler.checkAmountEnemys();
     }else{
+        phaseControler.checkAmountEnemys();
         phaseControler.enemys[0].drawBoss();
         phaseControler.enemys[0].updateBoss();
         phaseControler.checkColisionBoss();

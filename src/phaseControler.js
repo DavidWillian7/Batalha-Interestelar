@@ -5,7 +5,7 @@ class PhaseControler{
         this.playerShots = [];
         this.bossShots = [];
         this.explosions = [];
-        this.level = 1;
+        this.level = 5;
         this.delayShotBoss = false;
     }
     
