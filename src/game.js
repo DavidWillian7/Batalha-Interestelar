@@ -63,10 +63,15 @@ function draw(){
         }
 
         if(phaseControler.bonus.length > 0){
-            phaseControler.bonus.forEach(b => {
-                b.draw();
-                b.update();
-            })
+            for(let i = 0;i < phaseControler.bonus.length;i++){
+                if(phaseControler.bonus[i].type1){
+                    phaseControler.bonus[i].drawLifeBonus();
+                    phaseControler.bonus[i].updateLifeBonus(i);
+                }else{
+                    phaseControler.bonus[i].drawVelocityBonus();
+                    phaseControler.bonus[i].updateVelocityBonus(i);
+                }
+            }
         }
 
         if(phaseControler.explosions.length > 0){
