@@ -48,6 +48,6 @@ class Player extends GenericEntity{
         noFill();
         circle(this.x,this.y,45);
         imageMode(CENTER);
-        image(ship,this.x,this.y,40,40);
+        image(ship,this.x,this.y,45,40);
     }
 };

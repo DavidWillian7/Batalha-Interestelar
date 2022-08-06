@@ -58,15 +58,15 @@ function draw(){
             });
         }
 
+        if(phaseControler.explosions.length > 0){
+            phaseControler.explosions.forEach(explosion => {
+                explosion.drawExplosion();
+                explosion.updateExplosion();
+            });
+        }
+
         phaseControler.checkColisionEnemy();
         phaseControler.colisionShotEnemy();
-
-        /*if(phaseControler.explosions.length > 0){
-            for(let i = 0;i < phaseControler.explosions.length;i++){
-                phaseControler.explosions[i].drawExplosion();
-                phaseControler.explosions[i].updateExplosion();
-            }
-        }*/
 
     }else{
         phaseControler.enemys[0].drawBoss();
