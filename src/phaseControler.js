@@ -138,6 +138,7 @@ class PhaseControler{
                             this.player.points += 102;
                             if(this.enemys.length == 0){
                                 this.level++;
+                                this.playerShots.splice(0,this.playerShots.length-1);
                             }
                         }
                         this.playerShots.splice(j,1);
