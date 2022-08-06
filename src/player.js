@@ -4,8 +4,6 @@ class Player extends GenericEntity{
         this.hp = 100;
         this.points = 0;
         this.delayShot = false;
-        this.ship = loadImage('../assets/ship.png');
-        this.songShotPlayer = songShot;
         this.canonRigth = true;
     }
 
@@ -38,18 +36,18 @@ class Player extends GenericEntity{
                 phaseControler.playerShots.push(new Shot(this.x-12, this.y-10,25));
                 this.canonRigth = true;
             }
-            this.songShotPlayer.play();
-            this.songShotPlayer.setVolume(0.3);
+            songShotPlayer.play();
+            songShotPlayer.setVolume(0.3);
             this.delayShot = true;
             this.delay(15);
         }
     }
 
-    setPlayer(){
+    drawPlayer(){
         noStroke();
         noFill();
         circle(this.x,this.y,45);
         imageMode(CENTER);
-        image(this.ship,this.x,this.y,40,40);
+        image(ship,this.x,this.y,45,40);
     }
 };

@@ -4,9 +4,8 @@ class PhaseControler{
         this.enemys = [];
         this.playerShots = [];
         this.bossShots = [];
-        this.currentLevel = 1;
-        this.enemysImg = imgEnemys;
-        this.songShotBoss = shotBoss;
+        this.explosions = [];
+        this.level = 1;
         this.delayShotBoss = false;
     }
     
@@ -24,7 +23,7 @@ class PhaseControler{
         textSize(12);
         textFont('Pixel');
         textAlign(CENTER);
-        text("Nível: "  + this.currentLevel, 400, 440);
+        text("Nível: "  + this.level, 400, 440);
 
         fill(255,255,255);
         textSize(12);
@@ -44,159 +43,105 @@ class PhaseControler{
         rect(10,428,this.player.hp,15);
         
     }
+
+    changeBackground(){
+        if(this.level == 1){
+            return imgMaps[this.level-1];
+        }else if(this.level == 2){
+            return imgMaps[this.level-1];
+        }else if(this.level == 3){
+            return imgMaps[this.level-1];
+        }else if(this.level == 4){
+            return imgMaps[this.level-1];
+        }else{
+            return imgMaps[this.level-1];
+        }
+    }
     
-    setEnemys(amount){
-        if(this.currentLevel != 5){
-            for(let i = 0; i < amount; i++){
-                let randomX = parseInt(random(40,410));
-                let randomY = parseInt(random(-200,-1000));
-                this.enemys.push(new Enemy(randomX,randomY,1));
-                this.enemys[i].shipEnemy = this.enemysImg[0];
-                if(this.currentLevel == 2 && i%2 == 0){
-                    this.enemys[i].type = 2;
-                    this.enemys[i].hp *= this.currentLevel;
-                    this.enemys[i].shipEnemy = this.enemysImg[this.currentLevel-1];
-                }else if(this.currentLevel == 3 && i%3 == 0){
-                    this.enemys[i].type = 3;
-                    this.enemys[i].hp *= this.currentLevel;
-                    this.enemys[i].shipEnemy = this.enemysImg[this.currentLevel-1];
-                }else if(this.currentLevel == 4 && i%4 == 0){
-                    this.enemys[i].type = 4;
-                    this.enemys[i].hp *= this.currentLevel;
-                    this.enemys[i].shipEnemy = this.enemysImg[this.currentLevel-1];
-                }
-            }
-        }else{
-            let randomX = parseInt(random(0,400));
-            let randomY = parseInt(random(60,90));
+    createEnemys(amount){
+        for(let i = 0; i < amount; i++){
+            let randomX = parseInt(random(40,410));
+            let randomY = parseInt(random(-200,-1000));
             this.enemys.push(new Enemy(randomX,randomY,1));
-            this.enemys[0].shipEnemy = this.enemysImg[this.currentLevel-1];
-            this.enemys[0].type = 5;
-            this.enemys[0].hp = 2000;
-        }
-    }
-
-    updateEnemys(){
-        if(this.currentLevel != 5){
-            for(let enemy of this.enemys){
-                if(enemy.y > 500 || enemy.x > 500){
-                    enemy.x = parseInt(random(40,410));
-                    enemy.y = parseInt(random(-100,-1000));
-                }
-                else{
-                    enemy.move(0,2);
-                    circle(enemy.x,enemy.y,45);
-                    imageMode(CENTER);
-                    image(enemy.shipEnemy,enemy.x,enemy.y,40,40);
-                }
-            }
-        }else{
-            if(this.enemys[0].x <= 400 && this.enemys[0].moveRigth == true){
-                this.enemys[0].move(2,0);
-                if(this.enemys[0].x >= 401){
-                    this.enemys[0].moveRigth = false;
-                }
-            }else if(this.enemys[0].x >= 50 && this.enemys[0].moveRigth == false){
-                this.enemys[0].move(-2,0);
-                if(this.enemys[0].x <= 49){
-                    this.enemys[0].moveRigth = true;
-                }
-            }
-            circle(this.enemys[0].x,this.enemys[0].y,120);
-            imageMode(CENTER);
-            image(this.enemys[0].shipEnemy,this.enemys[0].x,this.enemys[0].y,120,120);
-            if(this.delayShotBoss == false){
-                this.bossShots.push(new Shot(this.enemys[0].x, this.enemys[0].y+50,25));
-                this.songShotBoss.play();
-                this.songShotBoss.setVolume(0.3);
-                this.delayShotBoss = true;
-                this.delay(70);
+            this.enemys[i].shipEnemy = imgEnemys[0];
+            if(this.level == 2 && i%2 == 0){
+                this.enemys[i].hp *= this.level;
+                this.enemys[i].shipEnemy = imgEnemys[this.level-1];
+            }else if(this.level == 3 && i%3 == 0){
+                this.enemys[i].hp *= this.level;
+                this.enemys[i].shipEnemy = imgEnemys[this.level-1];
+            }else if(this.level == 4 && i%4 == 0){
+                this.enemys[i].hp *= this.level;
+                this.enemys[i].shipEnemy = imgEnemys[this.level-1];
             }
         }
     }
 
-    updateplayerShots(){
-        for(let shot of this.playerShots){
-            if(shot.y < 0){
-                this.playerShots.splice(shot,1);
-            }
-            else{
-                shot.move(0,-2);
-                circle(shot.x,shot.y,15);
-                imageMode(CENTER);
-                image(shot.shotImg,shot.x,shot.y,6,15);
-            }
-        } 
+    createBoss(){
+        let randomX = parseInt(random(0,400));
+        let randomY = parseInt(random(60,90));
+        this.enemys.push(new Enemy(randomX,randomY,1));
+        this.enemys[0].shipEnemy = imgEnemys[this.level-1];
+        this.enemys[0].hp = 1000;
     }
 
-    updateBossShots(){
-        for(let shot of this.bossShots){
-            if(shot.y > 450){
-                this.bossShots.splice(shot,1);
-            }
-            else{
-                shot.move(0,2);
-                fill(255,255,255);
-                circle(shot.x,shot.y,15);
-            }
+    createShotBoss(){
+        if(this.delayShotBoss == false){
+            this.bossShots.push(new Shot(this.enemys[0].x+37, this.enemys[0].y+50,25));
+            this.bossShots.push(new Shot(this.enemys[0].x-37, this.enemys[0].y+50,25));
+            songShotBoss.play();
+            songShotBoss.setVolume(0.3);
+            this.delayShotBoss = true;
+            this.delay(70);
         }
+    }
+
+    playExplosion(){
+        songEnemyExplosion.play();
+        songEnemyExplosion.setVolume(0.3);
     }
 
     checkColisionEnemy(){
-        if(this.currentLevel != 5){
-            if(this.enemys.length > 0){
-                for(let i = 0;i < this.enemys.length;i++){
-                    if(dist(this.enemys[i].x, this.enemys[i].y,this.player.x,this.player.y) < 45){
-                        if(this.enemys[i].type != 1){
-                            this.player.hp -= (10*this.enemys[i].type);
-                        }else{
-                            this.player.hp -= 10;
-                        }
-                        this.player.points += 10;
-                        this.enemys.splice(i,1);
-                        break;
+        if(this.enemys.length > 0){
+            for(let i = 0;i < this.enemys.length;i++){
+                if(dist(this.enemys[i].x, this.enemys[i].y,this.player.x,this.player.y) < 45){
+                    if(this.level != 1){
+                        this.player.hp -= (10*this.level);
+                    }else{
+                        this.player.hp -= 10;
                     }
+                    this.playExplosion();
+                    this.explosions.push(new Explosion(this.enemys[i].x,this.enemys[i].y));
+                    this.enemys.splice(i,1);
+                     break;
                 }
-            }
-        }else{
-            if(dist(this.enemys[0].x, this.enemys[0].y,this.player.x,this.player.y) < 82.5){
-                this.player.hp -= (10*this.enemys[0].type);
             }
         }
     }
+    
+    checkColisionBoss(){
+        if(dist(this.enemys[0].x, this.enemys[0].y,this.player.x,this.player.y) < 82.5){
+            this.player.hp -= (10*this.level);
+        }
+    }
 
-    checkShotEnemy(){
-        if(this.currentLevel != 5){
-            if(this.playerShots.length > 0 && this.enemys.length > 0){
-                for(let i = 0;i < this.enemys.length;i++){
-                    for(let j = 0;j < this.playerShots.length;j++){
-                        if(dist(this.enemys[i].x, this.enemys[i].y,this.playerShots[j].x,this.playerShots[j].y) < 30){
-                            this.enemys[i].hp -= 10;
-                            if(this.enemys[i].hp == 0){
-                                this.enemys[i].move(0,0);
-                                this.enemys[i].enemyExplosionSong.play();
-                                this.enemys[i].enemyExplosionSong.setVolume(0.3);
-                                this.enemys[i].explosionEnemy(this.enemys[i].x,this.enemys[i].y);
-                                this.enemys.splice(i,1);
-                                this.player.points += 10;
+    colisionShotEnemy(){
+        if(this.playerShots.length > 0 && this.enemys.length > 0){
+            for(let i = 0;i < this.enemys.length;i++){
+                for(let j = 0;j < this.playerShots.length;j++){
+                    if(dist(this.enemys[i].x, this.enemys[i].y,this.playerShots[j].x,this.playerShots[j].y) < 30){
+                        this.enemys[i].hp -= 10;
+                        if(this.enemys[i].hp == 0){
+                            this.playExplosion()
+                            this.explosions.push(new Explosion(this.enemys[i].x,this.enemys[i].y));
+                            this.enemys.splice(i,1);
+                            this.player.points += 102;
+                            if(this.enemys.length == 0){
+                                this.level++;
+                                this.playerShots.splice(0,this.playerShots.length-1);
                             }
-                            this.playerShots.splice(j,1);
-                            break;
                         }
-                    }
-                }
-            }
-        }else{
-            if(this.playerShots.length > 0){
-                for(let i = 0;i < this.playerShots.length;i++){
-                    if(dist(this.playerShots[i].x,this.playerShots[i].y,this.enemys[0].x,this.enemys[0].y) < 67.5){
-                        this.enemys[0].hp -= 10;
-                        if(this.enemys[0].hp == 0){
-                            this.enemys[0].enemyExplosionSong.play();
-                            this.enemys.splice(0,1);
-                            this.player.points += 10;
-                        }
-                        this.playerShots.splice(i,1);
+                        this.playerShots.splice(j,1);
                         break;
                     }
                 }
@@ -204,16 +149,42 @@ class PhaseControler{
         }
     }
 
-    checkPlayerPoints(){
-        if(this.player.points == this.currentLevel*100){
-            this.player.points = 0; 
-            this.currentLevel++;
-            this.spawnEnemys(this.currentLevel);
+    colisionShotBoss(){
+        if(this.playerShots.length > 0){
+            for(let i = 0;i < this.playerShots.length;i++){
+                if(dist(this.playerShots[i].x,this.playerShots[i].y,this.enemys[0].x,this.enemys[0].y) < 67.5){
+                    this.enemys[0].hp -= 10;
+                    if(this.enemys[0].hp == 0){
+                        songEnemyExplosion.play();
+                        this.enemys.splice(0,1);
+                        this.player.points += 10000;
+                    }
+                    this.playerShots.splice(i,1);
+                    break;
+                }
+            }
         }
     }
 
-    spawnEnemys(level){
-        this.setEnemys(level*10);
+    colisionBossShotPlayer(){
+        if(this.bossShots.length > 0){
+            for(let i = 0;i < this.bossShots.length;i++){
+                if(dist(this.bossShots[i].x,this.bossShots[i].y,this.player.x,this.player.y) < 30){
+                    this.player.hp -= 15;
+                    this.bossShots.splice(i,1);
+                }
+            }
+        }
+    }
+
+    checkAmountEnemys(){
+        if(this.enemys.length == 0){
+            if(this.level >= 1 && this.level <=4){
+                this.createEnemys(this.level*10);
+            }else{
+                this.createBoss();
+            }
+        }
     }
 
     delay(t){
