@@ -39,7 +39,7 @@ class Player extends GenericEntity{
             songShotPlayer.play();
             songShotPlayer.setVolume(0.3);
             this.delayShot = true;
-            this.delay(15);
+            this.delay(65);
         }
     }
 

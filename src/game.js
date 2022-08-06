@@ -7,6 +7,8 @@ let shotBoss;
 let imgEnemys = [];
 let imgMaps = [];
 let imgExplosion = [];
+let imgLife;
+let imgClock;
 
 function preload(){
     let phaseControler;
@@ -17,6 +19,8 @@ function preload(){
     shotPlayer = loadImage('../assets/shot.png');
     shotBoss = loadImage('../assets/shotBoss.png');
     ship = loadImage('../assets/ship.png');
+    imgLife = loadImage('../assets/heart.png');
+    imgClock = loadImage('../assets/clock.png');
     for(let i = 1;i <= 5;i++){
         imgEnemys.push(loadImage('../assets/enemy'+i+'.png'));
     }
