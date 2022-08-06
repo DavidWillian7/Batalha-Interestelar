@@ -10,7 +10,6 @@ let imgExplosion = [];
 
 function preload(){
     let phaseControler;
-    let mapa;
     let gameSize;
     songShotPlayer = loadSound('../assets/songs/song-shot.wav');
     songEnemyExplosion = loadSound('../assets/songs/explosion.flac');
@@ -34,13 +33,12 @@ function setup(){
     createCanvas(gameSize,gameSize);
     phaseControler = new PhaseControler();
     phaseControler.createEnemys(phaseControler.level*10);
-    mapa = new Background();
 }
 
 function draw(){
     clear();
     imageMode(CORNER);
-    image(mapa.checkBackground(),0,0,gameSize,gameSize);
+    image(phaseControler.changeBackground(),0,0,gameSize,gameSize);
     phaseControler.drawHud();
     phaseControler.player.drawPlayer();
     phaseControler.player.updatePlayer()

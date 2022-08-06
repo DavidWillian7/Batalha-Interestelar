@@ -5,7 +5,7 @@ class PhaseControler{
         this.playerShots = [];
         this.bossShots = [];
         this.explosions = [];
-        this.level = 4;
+        this.level = 1;
         this.delayShotBoss = false;
     }
     
@@ -42,6 +42,20 @@ class PhaseControler{
         stroke(255, 255, 255);
         rect(10,428,this.player.hp,15);
         
+    }
+
+    changeBackground(){
+        if(this.level == 1){
+            return imgMaps[this.level-1];
+        }else if(this.level == 2){
+            return imgMaps[this.level-1];
+        }else if(this.level == 3){
+            return imgMaps[this.level-1];
+        }else if(this.level == 4){
+            return imgMaps[this.level-1];
+        }else{
+            return imgMaps[this.level-1];
+        }
     }
     
     createEnemys(amount){
