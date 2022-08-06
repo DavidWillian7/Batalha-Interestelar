@@ -64,13 +64,8 @@ function draw(){
 
         if(phaseControler.bonus.length > 0){
             for(let i = 0;i < phaseControler.bonus.length;i++){
-                if(phaseControler.bonus[i].type1){
-                    phaseControler.bonus[i].drawLifeBonus();
-                    phaseControler.bonus[i].updateLifeBonus(i);
-                }else{
-                    phaseControler.bonus[i].drawVelocityBonus();
-                    phaseControler.bonus[i].updateVelocityBonus(i);
-                }
+                phaseControler.bonus[i].draw();
+                phaseControler.bonus[i].update(i);
             }
         }
 

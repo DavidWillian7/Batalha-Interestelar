@@ -5,7 +5,7 @@ class Player extends GenericEntity{
         this.points = 0;
         this.delayShot = false;
         this.canonRigth = true;
-        this.velocityShot = 65;
+        this.valueDelay = 65;
     }
 
     delay(t){
@@ -40,7 +40,7 @@ class Player extends GenericEntity{
             songShotPlayer.play();
             songShotPlayer.setVolume(0.3);
             this.delayShot = true;
-            this.delay(this.velocityShot);
+            this.delay(this.valueDelay);
         }
     }
 
