@@ -32,13 +32,13 @@ function setup(){
     gameSize = 450;
     createCanvas(gameSize,gameSize);
     phaseControler = new PhaseControler();
-    phaseControler.createEnemys(phaseControler.level*10);
 }
 
 function draw(){
     clear();
     imageMode(CORNER);
     image(phaseControler.changeBackground(),0,0,gameSize,gameSize);
+    phaseControler.checkAmountEnemys();
     phaseControler.drawHud();
     phaseControler.player.drawPlayer();
     phaseControler.player.updatePlayer();
@@ -50,7 +50,7 @@ function draw(){
         });
     }
     
-    if(phaseControler.level != 5){
+    if(phaseControler.level >= 1 && phaseControler.level <= 4){
         if(phaseControler.enemys.length > 0){
             phaseControler.enemys.forEach(enemy => {
                 enemy.drawEnemys();
@@ -68,9 +68,7 @@ function draw(){
             }
         }*/
 
-        phaseControler.checkAmountEnemys();
     }else{
-        phaseControler.checkAmountEnemys();
         phaseControler.enemys[0].drawBoss();
         phaseControler.enemys[0].updateBoss();
         phaseControler.checkColisionBoss();

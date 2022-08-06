@@ -5,7 +5,7 @@ class PhaseControler{
         this.playerShots = [];
         this.bossShots = [];
         this.explosions = [];
-        this.level = 5;
+        this.level = 1;
         this.delayShotBoss = false;
     }
     
@@ -136,6 +136,9 @@ class PhaseControler{
                             this.explosions.push(new Explosion(this.enemys[i].x,this.enemys[i].y));
                             this.enemys.splice(i,1);
                             this.player.points += 102;
+                            if(this.enemys.length == 0){
+                                this.level++;
+                            }
                         }
                         this.playerShots.splice(j,1);
                         break;
@@ -175,8 +178,7 @@ class PhaseControler{
 
     checkAmountEnemys(){
         if(this.enemys.length == 0){
-            this.level++;
-            if(this.level != 5){
+            if(this.level >= 1 && this.level <=4){
                 this.createEnemys(this.level*10);
             }else{
                 this.createBoss();
