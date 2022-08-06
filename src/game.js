@@ -62,6 +62,13 @@ function draw(){
             });
         }
 
+        if(phaseControler.bonus.length > 0){
+            phaseControler.bonus.forEach(b => {
+                b.draw();
+                b.update();
+            })
+        }
+
         if(phaseControler.explosions.length > 0){
             phaseControler.explosions.forEach(explosion => {
                 explosion.drawExplosion();
@@ -69,6 +76,7 @@ function draw(){
             });
         }
 
+        phaseControler.checkColisionPlayerBonus();
         phaseControler.checkColisionEnemy();
         phaseControler.colisionShotEnemy();
 
