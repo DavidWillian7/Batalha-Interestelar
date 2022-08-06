@@ -13,7 +13,9 @@ class Explosion{
     }
 
     drawExplosion(){
-        imageMode(CENTER);
-        image(imgExplosion[this.frame],this.x, this.y, 70, 70);
+        if(this.frame < 48){
+            imageMode(CENTER);
+            image(imgExplosion[this.frame],this.x, this.y, 70, 70);
+        }
     }
 };
