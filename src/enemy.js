@@ -15,6 +15,8 @@ class Enemy extends GenericEntity{
     }
 
     drawEnemys(){
+        noStroke();
+        noFill();
         circle(this.x,this.y,45);
         imageMode(CENTER);
         image(this.shipEnemy,this.x,this.y,40,40);
@@ -36,6 +38,8 @@ class Enemy extends GenericEntity{
     }
 
     drawBoss(){
+        noStroke();
+        noFill();
         circle(this.x,this.y,120);
         imageMode(CENTER);
         image(this.shipEnemy,this.x,this.y,120,120);

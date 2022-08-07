@@ -1,6 +1,10 @@
 class Shot extends GenericEntity{
     constructor(x,y,speed){
         super(x,y,speed);
+        noStroke()
+		fill('#FDE926');
+		ellipse(this.x, this.y, 20,20);
+		ellipse(this.x, this.y, 10,10);
     }
 
     updatePlayerShot(){
@@ -11,6 +15,8 @@ class Shot extends GenericEntity{
     }
 
     drawPlayerShot(){
+        noStroke();
+        noFill();
         circle(this.x,this.y,15);
         imageMode(CENTER);
         image(shotPlayer,this.x,this.y,6,15);
@@ -24,6 +30,8 @@ class Shot extends GenericEntity{
     }
 
     drawShotBoss(){
+        noStroke();
+        noFill();
         circle(this.x,this.y,15);
         imageMode(CENTER);
         image(shotBoss,this.x,this.y,15,15);
