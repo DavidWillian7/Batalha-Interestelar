@@ -63,15 +63,18 @@ class PhaseControler{
         for(let i = 0; i < amount; i++){
             let randomX = parseInt(random(40,410));
             let randomY = parseInt(random(-200,-1000));
-            this.enemys.push(new Enemy(randomX,randomY,1));
+            this.enemys.push(new Enemy(randomX,randomY,1.5));
             this.enemys[i].shipEnemy = imgEnemys[0];
             if(this.level == 2 && i%2 == 0){
+                this.enemys[i].speed = 1.75;
                 this.enemys[i].hp *= this.level;
                 this.enemys[i].shipEnemy = imgEnemys[this.level-1];
             }else if(this.level == 3 && i%3 == 0){
+                this.enemys[i].speed = 1.85;
                 this.enemys[i].hp *= this.level;
                 this.enemys[i].shipEnemy = imgEnemys[this.level-1];
             }else if(this.level == 4 && i%4 == 0){
+                this.enemys[i].speed = 1.95;
                 this.enemys[i].hp *= this.level;
                 this.enemys[i].shipEnemy = imgEnemys[this.level-1];
             }

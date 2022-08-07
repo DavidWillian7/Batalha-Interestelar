@@ -82,6 +82,7 @@ function draw(){
 
     }else{
         phaseControler.explosions.splice(0,phaseControler.explosions.length);
+        phaseControler.bonus.splice(0,phaseControler.bonus.length);
         phaseControler.enemys[0].drawBoss();
         phaseControler.enemys[0].updateBoss();
         phaseControler.checkColisionBoss();

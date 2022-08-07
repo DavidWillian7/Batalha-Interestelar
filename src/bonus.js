@@ -11,7 +11,7 @@ class LifeBonus extends GenericEntity{
     }
 
     update(i){
-        this.move(0,1);
+        this.move(0,1.5);
         if(this.y > 455){
             phaseControler.bonus.splice(i,1);
         }
@@ -26,7 +26,7 @@ class LifeBonus extends GenericEntity{
 class VelocityShotBonus extends GenericEntity{
     constructor(x,y,speed){
         super(x,y,speed);
-        this.velocityShot = 5;
+        this.velocityShot = 3;
     }
 
     draw(){
@@ -36,7 +36,7 @@ class VelocityShotBonus extends GenericEntity{
     }
 
     update(i){
-        this.move(0,1);
+        this.move(0,1.5);
         if(this.y > 455){
             phaseControler.bonus.splice(i,1);
         }
