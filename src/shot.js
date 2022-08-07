@@ -1,10 +1,12 @@
 class Shot extends GenericEntity{
-    constructor(x,y,speed){
+    constructor(x,y,speed,type){
         super(x,y,speed);
-        noStroke()
-		fill('#FDE926');
-		ellipse(this.x, this.y, 20,20);
-		ellipse(this.x, this.y, 10,10);
+        if(type == "PLAYER_SHOT"){
+            noStroke()
+            fill('#FDE926');
+            ellipse(this.x, this.y, 20,20);
+            ellipse(this.x, this.y, 10,10);
+        }
     }
 
     updatePlayerShot(){

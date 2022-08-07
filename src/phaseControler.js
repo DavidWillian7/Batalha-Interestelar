@@ -88,8 +88,8 @@ class PhaseControler{
 
     createShotBoss(){
         if(this.delayShotBoss == false){
-            this.bossShots.push(new Shot(this.enemys[0].x+37, this.enemys[0].y+50,25));
-            this.bossShots.push(new Shot(this.enemys[0].x-37, this.enemys[0].y+50,25));
+            this.bossShots.push(new Shot(this.enemys[0].x+37, this.enemys[0].y+50,25,"BOSS_SHOT"));
+            this.bossShots.push(new Shot(this.enemys[0].x-37, this.enemys[0].y+50,25,"BOSS_SHOT"));
             songShotBoss.play();
             songShotBoss.setVolume(0.3);
             this.delayShotBoss = true;
