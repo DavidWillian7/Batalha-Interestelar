@@ -7,6 +7,7 @@ class PhaseControler{
         this.explosions = [];
         this.bonus = [];
         this.level = 1;
+        this.animation;
         this.delayShotBoss = false;
     }
     
@@ -117,6 +118,13 @@ class PhaseControler{
                     this.playExplosion();
                     this.explosions.push(new Explosion(this.enemys[i].x,this.enemys[i].y));
                     this.enemys.splice(i,1);
+
+                    if(this.enemys.length == 0){
+                        this.level++;
+                        this.playerShots.splice(0,this.playerShots.length);
+                        this.animation = new Animation(`Nível: ${this.level}`);
+                    }
+
                      break;
                 }
             }
@@ -143,7 +151,8 @@ class PhaseControler{
                             this.player.points += 102;
                             if(this.enemys.length == 0){
                                 this.level++;
-                                this.playerShots.splice(0,this.playerShots.length-1);
+                                this.playerShots.splice(0,this.playerShots.length);
+                                this.animation = new Animation(`Nível: ${this.level}`);
                             }
                         }
                         this.playerShots.splice(j,1);
@@ -184,7 +193,7 @@ class PhaseControler{
 
     checkAmountEnemys(){
         if(this.enemys.length == 0){
-            if(this.level >= 1 && this.level <=4){
+            if(this.level >= 1 && this.level <= 4){
                 this.createEnemys(this.level*10);
             }else{
                 this.createBoss();

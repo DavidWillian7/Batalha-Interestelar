@@ -46,6 +46,11 @@ function draw(){
     phaseControler.drawHud();
     phaseControler.player.drawPlayer();
     phaseControler.player.updatePlayer();
+    
+    if(phaseControler.animation){
+        phaseControler.animation.draw();
+        phaseControler.animation.update();
+    }
 
     if(phaseControler.playerShots.length > 0){
         phaseControler.playerShots.forEach(shot => {
