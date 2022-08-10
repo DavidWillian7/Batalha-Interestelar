@@ -14,7 +14,7 @@ class Enemy extends GenericEntity{
         }
     }
 
-    drawEnemys(){
+    drawEnemy(){
         noStroke();
         noFill();
         circle(this.x,this.y,45);

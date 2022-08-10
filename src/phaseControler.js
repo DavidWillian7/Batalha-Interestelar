@@ -146,7 +146,7 @@ class PhaseControler{
                         if(this.enemys[i].hp == 0){
                             this.playExplosion()
                             this.explosions.push(new Explosion(this.enemys[i].x,this.enemys[i].y));
-                            this.checkDropChance(0.25,this.enemys[i].x,this.enemys[i].y,1.5);
+                            this.checkDropChance(0.3,this.enemys[i].x,this.enemys[i].y,1.5);
                             this.enemys.splice(i,1);
                             this.player.points += 102;
                             if(this.enemys.length == 0){

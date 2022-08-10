@@ -62,7 +62,7 @@ function draw(){
     if(phaseControler.level >= 1 && phaseControler.level <= 4){
         if(phaseControler.enemys.length > 0){
             phaseControler.enemys.forEach(enemy => {
-                enemy.drawEnemys();
+                enemy.drawEnemy();
                 enemy.updateEnemy();
             });
         }
