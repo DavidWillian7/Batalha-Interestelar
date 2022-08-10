@@ -1,7 +1,7 @@
 class LifeBonus extends GenericEntity{
     constructor(x,y,speed){
         super(x,y,speed);
-        this.lifeBonus = 10;
+        this.lifeBonus = (10*phaseControler.level)/2;
     }
 
     draw(){
@@ -11,7 +11,7 @@ class LifeBonus extends GenericEntity{
     }
 
     update(i){
-        this.move(0,1.5);
+        this.move(0,this.speed);
         if(this.y > 455){
             phaseControler.bonus.splice(i,1);
         }
@@ -36,7 +36,7 @@ class VelocityShotBonus extends GenericEntity{
     }
 
     update(i){
-        this.move(0,1.5);
+        this.move(0,this.speed);
         if(this.y > 455){
             phaseControler.bonus.splice(i,1);
         }

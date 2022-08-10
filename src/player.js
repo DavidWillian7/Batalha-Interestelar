@@ -31,10 +31,10 @@ class Player extends GenericEntity{
         }
         if(keyIsDown(90) && this.delayShot == false){
             if(this.canonRigth){
-                phaseControler.playerShots.push(new Shot(this.x+12, this.y-10,25,"PLAYER_SHOT"));
+                phaseControler.playerShots.push(new Shot(this.x+12, this.y-10,3,"PLAYER_SHOT"));
                 this.canonRigth = false;
             }else{
-                phaseControler.playerShots.push(new Shot(this.x-12, this.y-10,25,"PLAYER_SHOT"));
+                phaseControler.playerShots.push(new Shot(this.x-12, this.y-10,3,"PLAYER_SHOT"));
                 this.canonRigth = true;
             }
             songShotPlayer.play();

@@ -10,7 +10,7 @@ class Shot extends GenericEntity{
     }
 
     updatePlayerShot(){
-        this.move(0,-2);
+        this.move(0,-this.speed);
         if(this.y < 0){
             phaseControler.playerShots.splice(this,1);
         }

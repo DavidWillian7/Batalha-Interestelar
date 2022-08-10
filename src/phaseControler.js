@@ -64,18 +64,18 @@ class PhaseControler{
         for(let i = 0; i < amount; i++){
             let randomX = parseInt(random(40,410));
             let randomY = parseInt(random(-200,-1000));
-            this.enemys.push(new Enemy(randomX,randomY,1.5));
+            this.enemys.push(new Enemy(randomX,randomY,2));
             this.enemys[i].shipEnemy = imgEnemys[0];
             if(this.level == 2 && i%2 == 0){
-                this.enemys[i].speed = 1.75;
+                this.enemys[i].speed = 2.5;
                 this.enemys[i].hp *= this.level;
                 this.enemys[i].shipEnemy = imgEnemys[this.level-1];
             }else if(this.level == 3 && i%3 == 0){
-                this.enemys[i].speed = 1.85;
+                this.enemys[i].speed = 2.7;
                 this.enemys[i].hp *= this.level;
                 this.enemys[i].shipEnemy = imgEnemys[this.level-1];
             }else if(this.level == 4 && i%4 == 0){
-                this.enemys[i].speed = 1.95;
+                this.enemys[i].speed = 2.9;
                 this.enemys[i].hp *= this.level;
                 this.enemys[i].shipEnemy = imgEnemys[this.level-1];
             }
@@ -85,7 +85,7 @@ class PhaseControler{
     createBoss(){
         let randomX = parseInt(random(0,400));
         let randomY = parseInt(random(60,90));
-        this.enemys.push(new Enemy(randomX,randomY,1));
+        this.enemys.push(new Enemy(randomX,randomY,2));
         this.enemys[0].shipEnemy = imgEnemys[this.level-1];
         this.enemys[0].hp = 1000;
     }
@@ -146,7 +146,7 @@ class PhaseControler{
                         if(this.enemys[i].hp == 0){
                             this.playExplosion()
                             this.explosions.push(new Explosion(this.enemys[i].x,this.enemys[i].y));
-                            this.checkDropChance(0.2,this.enemys[i].x,this.enemys[i].y,1);
+                            this.checkDropChance(0.25,this.enemys[i].x,this.enemys[i].y,1.5);
                             this.enemys.splice(i,1);
                             this.player.points += 102;
                             if(this.enemys.length == 0){

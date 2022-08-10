@@ -7,7 +7,7 @@ class Enemy extends GenericEntity{
     }
 
     updateEnemy(){
-        this.move(0, 2);
+        this.move(0, this.speed);
         if(this.y > 500){
             this.x = parseInt(random(40, 410));
             this.y = parseInt(random(-100, -1000));
@@ -24,7 +24,7 @@ class Enemy extends GenericEntity{
 
     updateBoss(){
         if(this.x <= 400 && this.moveRigth == true){
-            this.move(2, 0);
+            this.move(this.speed, 0);
             if(this.x >= 401){
                 this.moveRigth = false;
             }
