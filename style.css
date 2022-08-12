@@ -90,3 +90,7 @@ body {
 .btn-menu-historia{
     margin: 5px auto;
 }
+
+.menu-end-game{
+    justify-content: flex-end;
+}
