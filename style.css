@@ -19,13 +19,14 @@ canvas {
 body {
     display: flex;
     justify-content: center;
-    flex-direction: column;
-    align-items: center;
     margin-top: 50px;
     background-color: white;
 }
 
 .menu{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     width: 450px;
     height: 450px;
     border: solid 1px black;
@@ -37,25 +38,19 @@ body {
     font-weight: 700;
     font-style: italic;
     text-align: center;
-    padding: 30px;
-    margin: auto;
-    margin-top: 25px;
-    margin-bottom: 30px;
+    padding: 15px;
+    margin: 40px auto;
     color: white;
 }
 
 .menu-btn{
     font-weight: 500;
-    display: flex;
-    flex-direction: column;
     border-radius: 15px;
     font-size: 22px;
     padding: 10px;
-    margin: auto;
-    margin-bottom: 25px;
+    margin: 20px auto;
     color: #42a1f4;
     min-width: 30%;
-    align-items: center;
     transition: all 0.5s;
 }
 
@@ -66,19 +61,23 @@ body {
     width: 31%;
 }
 
+.titulo-tutorial{
+    margin: 20px auto; 
+}
+
 .tutorial{
     color: white;
     margin: 10px 60px;
+    text-align: justify;
+    text-indent: 20px;
 }
 
-.btn-menu{
-    margin-top: 25px;
+.menu-btn-tutorial{
+    margin: 10px auto;
 }
 
 .titulo-historia{
-    margin-top: 40px;
-    margin-bottom: 0;
-    padding: 15px 20px;
+    margin: 20px auto;
 }
 
 .historia{
@@ -89,5 +88,5 @@ body {
 }
 
 .btn-menu-historia{
-    margin-top: 37px;
+    margin: 5px auto;
 }
