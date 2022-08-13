@@ -43,6 +43,7 @@ function draw(){
     imageMode(CORNER);
     image(phaseControler.changeBackground(),0,0,gameSize,gameSize);
     phaseControler.checkAmountEnemys();
+    endGame(phaseControler);
     phaseControler.drawHud();
     phaseControler.player.drawPlayer();
     phaseControler.player.updatePlayer();
@@ -88,8 +89,9 @@ function draw(){
     }else{
         phaseControler.explosions.splice(0,phaseControler.explosions.length);
         phaseControler.bonus.splice(0,phaseControler.bonus.length);
-        phaseControler.enemys[0].drawBoss();
-        phaseControler.enemys[0].updateBoss();
+
+        phaseControler.boss.drawBoss();
+        phaseControler.boss.updateBoss();
         phaseControler.checkColisionBoss();
         phaseControler.colisionShotBoss();
         phaseControler.createShotBoss();

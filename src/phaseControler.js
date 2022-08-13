@@ -2,6 +2,7 @@ class PhaseControler{
     constructor(){
         this.player = new Player(225,390,3);
         this.enemys = [];
+        this.boss;
         this.playerShots = [];
         this.bossShots = [];
         this.explosions = [];
@@ -85,15 +86,15 @@ class PhaseControler{
     createBoss(){
         let randomX = parseInt(random(0,400));
         let randomY = parseInt(random(60,90));
-        this.enemys.push(new Enemy(randomX,randomY,2));
-        this.enemys[0].shipEnemy = imgEnemys[this.level-1];
-        this.enemys[0].hp = 1000;
+        this.boss = new Enemy(randomX,randomY,2);
+        this.boss.shipEnemy = imgEnemys[this.level-1];
+        this.boss.hp = 1000;
     }
 
     createShotBoss(){
         if(this.delayShotBoss == false){
-            this.bossShots.push(new Shot(this.enemys[0].x+37, this.enemys[0].y+50,25,"BOSS_SHOT"));
-            this.bossShots.push(new Shot(this.enemys[0].x-37, this.enemys[0].y+50,25,"BOSS_SHOT"));
+            this.bossShots.push(new Shot(this.boss.x+37, this.boss.y+50,25,"BOSS_SHOT"));
+            this.bossShots.push(new Shot(this.boss.x-37, this.boss.y+50,25,"BOSS_SHOT"));
             songShotBoss.play();
             songShotBoss.setVolume(0.3);
             this.delayShotBoss = true;
@@ -125,14 +126,14 @@ class PhaseControler{
                         this.animation = new Animation(`Nível: ${this.level}`);
                     }
 
-                     break;
+                    break;
                 }
             }
         }
     }
     
     checkColisionBoss(){
-        if(dist(this.enemys[0].x, this.enemys[0].y,this.player.x,this.player.y) < 82.5){
+        if(dist(this.boss.x, this.boss.y,this.player.x,this.player.y) < 82.5){
             this.player.hp -= (10*this.level);
         }
     }
@@ -166,11 +167,9 @@ class PhaseControler{
     colisionShotBoss(){
         if(this.playerShots.length > 0){
             for(let i = 0;i < this.playerShots.length;i++){
-                if(dist(this.playerShots[i].x,this.playerShots[i].y,this.enemys[0].x,this.enemys[0].y) < 67.5){
-                    this.enemys[0].hp -= 10;
-                    if(this.enemys[0].hp == 0){
-                        songEnemyExplosion.play();
-                        this.enemys.splice(0,1);
+                if(dist(this.playerShots[i].x,this.playerShots[i].y,this.boss.x,this.boss.y) < 67.5){
+                    this.boss.hp -= 10;
+                    if(this.boss.hp == 0){
                         this.player.points += 10000;
                     }
                     this.playerShots.splice(i,1);
@@ -195,7 +194,7 @@ class PhaseControler{
         if(this.enemys.length == 0){
             if(this.level >= 1 && this.level <= 4){
                 this.createEnemys(this.level*10);
-            }else{
+            }else if(this.boss == undefined){
                 this.createBoss();
             }
         }

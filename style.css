@@ -94,3 +94,9 @@ body {
 .menu-end-game{
     justify-content: flex-end;
 }
+
+#resultado, #mensagem{
+    color: #ffffff;
+    text-align: center;
+    margin-top: 16px;
+}

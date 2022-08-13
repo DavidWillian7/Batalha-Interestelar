@@ -7,12 +7,17 @@
     <title>Fim de Jogo</title>
     <link rel="stylesheet" href="style.css">
     <link rel="shortcut icon" href="assets/favicon.ico" type="image/x-icon">
+    <script src="src/endGame.js"></script>
 </head>
 <body>
     <div class="menu menu-end-game">
-        <h1></h1>
-        <p></p>
+        <h1 id="mensagem"></h1>
+        <p id="resultado"></p>
         <button class="menu-btn endGame" onclick="window.location.href = 'index.html'">Menu</button>
     </div>
+
+    <script>
+        writeMessage();
+    </script>
 </body>
 </html>
