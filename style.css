@@ -96,6 +96,7 @@ body {
 }
 
 #resultado, #mensagem{
+    margin: 70px auto;
     color: #ffffff;
     text-align: center;
     margin-top: 16px;
