@@ -75,19 +75,11 @@ function draw(){
             }
         }
 
-        if(phaseControler.explosions.length > 0){
-            phaseControler.explosions.forEach(explosion => {
-                explosion.drawExplosion();
-                explosion.updateExplosion();
-            });
-        }
-
         phaseControler.checkColisionPlayerBonus();
         phaseControler.checkColisionEnemy();
         phaseControler.colisionShotEnemy();
 
     }else{
-        phaseControler.explosions.splice(0,phaseControler.explosions.length);
         phaseControler.bonus.splice(0,phaseControler.bonus.length);
 
         phaseControler.boss.drawBoss();
@@ -105,4 +97,12 @@ function draw(){
 
         phaseControler.colisionBossShotPlayer();
     }
+
+    if(phaseControler.explosions.length > 0){
+        phaseControler.explosions.forEach(explosion => {
+            explosion.drawExplosion();
+            explosion.updateExplosion();
+        });
+    }
+
 }

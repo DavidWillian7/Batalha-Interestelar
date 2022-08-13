@@ -1,7 +1,8 @@
 class Explosion{
-    constructor(x,y){
+    constructor(x,y,d){
         this.x = x;
         this.y = y;
+        this.diameter = d;
         this.frame = 0;
     }
 
@@ -15,7 +16,7 @@ class Explosion{
     drawExplosion(){
         if(this.frame < 48){
             imageMode(CENTER);
-            image(imgExplosion[this.frame],this.x, this.y, 70, 70);
+            image(imgExplosion[this.frame],this.x, this.y, this.diameter, this.diameter);
         }
     }
 };

@@ -117,7 +117,7 @@ class PhaseControler{
                         this.player.hp -= 10;
                     }
                     this.playExplosion();
-                    this.explosions.push(new Explosion(this.enemys[i].x,this.enemys[i].y));
+                    this.explosions.push(new Explosion(this.enemys[i].x,this.enemys[i].y,70));
                     this.enemys.splice(i,1);
 
                     if(this.enemys.length == 0){
@@ -143,10 +143,11 @@ class PhaseControler{
             for(let i = 0;i < this.enemys.length;i++){
                 for(let j = 0;j < this.playerShots.length;j++){
                     if(dist(this.enemys[i].x, this.enemys[i].y,this.playerShots[j].x,this.playerShots[j].y) < 30){
+                        this.explosions.push(new Explosion(this.playerShots[j].x,this.playerShots[j].y,20));
                         this.enemys[i].hp -= 10;
                         if(this.enemys[i].hp == 0){
                             this.playExplosion()
-                            this.explosions.push(new Explosion(this.enemys[i].x,this.enemys[i].y));
+                            this.explosions.push(new Explosion(this.enemys[i].x,this.enemys[i].y,70));
                             this.checkDropChance(0.3,this.enemys[i].x,this.enemys[i].y,1.5);
                             this.enemys.splice(i,1);
                             this.player.points += 102;
@@ -168,6 +169,7 @@ class PhaseControler{
         if(this.playerShots.length > 0){
             for(let i = 0;i < this.playerShots.length;i++){
                 if(dist(this.playerShots[i].x,this.playerShots[i].y,this.boss.x,this.boss.y) < 67.5){
+                    this.explosions.push(new Explosion(this.playerShots[i].x,this.playerShots[i].y,40));
                     this.boss.hp -= 10;
                     if(this.boss.hp == 0){
                         this.player.points += 10000;
