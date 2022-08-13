@@ -19,7 +19,7 @@ class PhaseControler{
             return '#FFFFFF';
         }
     }
-    //#42a1f4
+    
     drawHud(){
         noStroke();
         fill(255,255,255);
@@ -116,6 +116,7 @@ class PhaseControler{
                     }else{
                         this.player.hp -= 10;
                     }
+                    songEnemyExplosion.rate(1.0);
                     this.playExplosion();
                     this.explosions.push(new Explosion(this.enemys[i].x,this.enemys[i].y,70));
                     this.enemys.splice(i,1);
@@ -143,9 +144,16 @@ class PhaseControler{
             for(let i = 0;i < this.enemys.length;i++){
                 for(let j = 0;j < this.playerShots.length;j++){
                     if(dist(this.enemys[i].x, this.enemys[i].y,this.playerShots[j].x,this.playerShots[j].y) < 30){
-                        this.explosions.push(new Explosion(this.playerShots[j].x,this.playerShots[j].y,20));
                         this.enemys[i].hp -= 10;
+
+                        if(this.enemys[i].hp > 0){
+                            songEnemyExplosion.rate(4.0);
+                            this.playExplosion();
+                            this.explosions.push(new Explosion(this.playerShots[j].x,this.playerShots[j].y,20));
+                        }
+
                         if(this.enemys[i].hp == 0){
+                            songEnemyExplosion.rate(1.0);
                             this.playExplosion()
                             this.explosions.push(new Explosion(this.enemys[i].x,this.enemys[i].y,70));
                             this.checkDropChance(0.3,this.enemys[i].x,this.enemys[i].y,1.5);
@@ -169,6 +177,8 @@ class PhaseControler{
         if(this.playerShots.length > 0){
             for(let i = 0;i < this.playerShots.length;i++){
                 if(dist(this.playerShots[i].x,this.playerShots[i].y,this.boss.x,this.boss.y) < 67.5){
+                    songEnemyExplosion.rate(4.0);
+                    this.playExplosion();
                     this.explosions.push(new Explosion(this.playerShots[i].x,this.playerShots[i].y,40));
                     this.boss.hp -= 10;
                     if(this.boss.hp == 0){
@@ -185,6 +195,10 @@ class PhaseControler{
         if(this.bossShots.length > 0){
             for(let i = 0;i < this.bossShots.length;i++){
                 if(dist(this.bossShots[i].x,this.bossShots[i].y,this.player.x,this.player.y) < 30){
+                    songEnemyExplosion.rate(4.0);
+                    this.playExplosion();
+                    this.explosions.push(new Explosion(this.bossShots[i].x,this.bossShots[i].y,20));
+
                     this.player.hp -= 15;
                     this.bossShots.splice(i,1);
                 }
