@@ -38,7 +38,6 @@ body {
     font-weight: 700;
     font-style: italic;
     text-align: center;
-    padding: 15px;
     margin: 40px auto;
     color: white;
 }
@@ -59,6 +58,11 @@ body {
     color: white;
     cursor: pointer;
     width: 31%;
+}
+
+#sound{
+    cursor: pointer;
+    margin: 5px;
 }
 
 .titulo-tutorial{
