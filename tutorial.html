@@ -7,8 +7,6 @@
     <title>Tutorial</title>
     <link rel="stylesheet" href="style.css">
     <link rel="shortcut icon" href="assets/favicon.ico" type="image/x-icon">
-    <script src="src/libs/p5.min.js"></script>
-    <script src="src/libs/p5.sound.js"></script>
     <script src="src/gameMusic.js"></script>
 </head>
 <body>
@@ -20,6 +18,7 @@
         <p class="tutorial">Pegue o <img src="assets/heartTutorial.png" alt="coração"> que dropa dos inimigos para encher a vida.</p>
         <p class="tutorial">Pegue o <img src="assets/clock.png" width="16px" alt="relógio"> que dropa dos inimigos para aumentar a velocidade do disparo.</p>
         <button class="menu-btn menu-btn-tutorial" onclick="window.location.href = 'index.html'">Menu</button>
+        <img id="sound" src="assets/sound.png" alt="ícone de som mutado" onclick="sound()">
     </div>
 </body>
 </html>
