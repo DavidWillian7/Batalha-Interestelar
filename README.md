@@ -1,5 +1,5 @@
 # Batalha-Interestelar
-Peguei um jogo que fiz no início da minha graduação, quando estava aprendendo lógica de programação, e me desafiei a melhorar o jogo, já que na época não consegui implementar muita coisa.
+Peguei o jogo que fiz no início da minha graduação, quando estava aprendendo lógica de programação, e me desafiei a melhorar o jogo, já que na época não consegui implementar muita coisa.
 
 <img src="assets/prints/menu.png" alt="menu do jogo">
 
