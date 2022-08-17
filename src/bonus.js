@@ -18,7 +18,9 @@ class LifeBonus extends GenericEntity{
     }
 
     applyBonus(player){
-        player.hp += this.lifeBonus;
+        if(player.hp < 100){
+            player.hp += this.lifeBonus;
+        }
     }
 
 }
@@ -43,7 +45,9 @@ class VelocityShotBonus extends GenericEntity{
     }
 
     applyBonus(player){
-        player.valueDelay -= this.velocityShot;
+        if(player.valueDelay > 0){
+            player.valueDelay -= this.velocityShot;
+        }
     }
 
 }

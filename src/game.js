@@ -47,6 +47,7 @@ function draw(){
     phaseControler.drawHud();
     phaseControler.player.drawPlayer();
     phaseControler.player.updatePlayer();
+    phaseControler.checkLifePlayer();
     
     if(phaseControler.animation){
         phaseControler.animation.draw();

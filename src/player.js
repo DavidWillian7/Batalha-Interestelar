@@ -37,6 +37,7 @@ class Player extends GenericEntity{
                 phaseControler.playerShots.push(new Shot(this.x-12, this.y-10,3,"PLAYER_SHOT"));
                 this.canonRigth = true;
             }
+            songShotPlayer.rate(1.0);
             songShotPlayer.play();
             songShotPlayer.setVolume(0.3);
             this.delayShot = true;
