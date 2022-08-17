@@ -6,12 +6,12 @@ Peguei o jogo que fiz no início da minha graduação, quando estava aprendendo 
 ## 🔧 Funçoes 
 
 ### Menu:
-O menu contém três botões o de Jogar, Tutorial e História, cada botão redireciona para outra página, o menu também conta com uma imagem de som mutado.
+O menu contém três botões o de Jogar, Tutorial e História, cada botão redireciona para outra página, o menu também conta com uma imagem de som mutado que é o play da música do jogo, quando o usuário clica a música começa a tocar e a imagem do som mutado é trocada por um som tocando.
 
 <img src="assets/prints/menu.png" alt="menu do jogo">
 
 ### Jogar:
-Ao clicar no botão Jogar a página de jogo é carregada, começando pelo nível 1, que contém apenas um tipo de inimigo, o jogo conta com 5 níveis, cada nível tem um cenário de fundo diferente, além de ter 5 tipos de inimigo, sendo um deles o chefão.
+Ao clicar no botão Jogar a página de jogo é carregada, começando pelo nível 1, que contém apenas um tipo de inimigo, o jogo conta com 5 níveis, cada nível tem um cenário de fundo diferente, além disso, o jogo contém 5 tipos de inimigo, sendo um deles o chefão.
 
 <img src="assets/prints/nivel1.png" alt="nível 1">
 
