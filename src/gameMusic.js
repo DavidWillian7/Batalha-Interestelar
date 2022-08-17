@@ -1,16 +1,15 @@
 const music = new Audio('assets/songs/gameMusic.wav');
-let sound2 = true;
+let active = true;
 
 function sound(){
-    if(sound2){
-        document.getElementById("sound").src = "assets/sound2.png";
-        sound2 = false;
+    if(active){
+        document.getElementById("sound").src = "assets/active.png";
+        active = false;
         music.play();
         music.loop = true;
-        music.pause();
     }else{
-        document.getElementById("sound").src = "assets/sound.png";
-        sound2 = true;
+        document.getElementById("sound").src = "assets/mute.png";
+        active = true;
         music.pause();
     }
 }
